@@ -87,7 +87,7 @@
 <body>
 
 <header>
-    <h1>Welcome to HushedAlways's Portfolio</h1>
+    <h1>筚路蓝缕，栉风沐雨</h1>
 </header>
 
 <nav>
@@ -102,7 +102,7 @@
 
 <section id="home" class="container">
     <h2>首页</h2>
-    <p>筚路蓝缕，栉风沐雨</p>
+    <p>你好</p>
 </section>
 
 <section id="about" class="container">
@@ -168,30 +168,41 @@
         });
     });
 
-    // 模拟打字效果的函数
-    function typeWriter(element, newText, index, interval) {
-        if (index < newText.length) {
-            element.innerHTML += newText.charAt(index);
-            index++;
-            setTimeout(function() {
-                typeWriter(element, newText, index, interval);
-            }, interval);
-        }
+    const titleElement = document.querySelector('header h1');
+    const originalText = '筚路蓝缕，栉风沐雨';
+    const newText = '为了更伟大的利益';
+    let isShowingOriginalText = true;
+
+    function changeText() {
+        let currentText = titleElement.innerText;
+        const targetText = isShowingOriginalText ? newText : originalText;
+
+        const clearText = () => {
+            if (currentText.length > 0) {
+                currentText = currentText.substring(0, currentText.length - 1);
+                titleElement.innerText = currentText;
+                setTimeout(clearText, 100);
+            } else {
+                addText();
+            }
+        };
+
+        const addText = () => {
+            if (currentText.length < targetText.length) {
+                currentText = targetText.substring(0, currentText.length + 1);
+                titleElement.innerText = currentText;
+                setTimeout(addText, 100);
+            } else {
+                isShowingOriginalText = !isShowingOriginalText;
+                setTimeout(changeText, 3000);
+            }
+        };
+
+        clearText();
     }
 
-    // 清除原有文本并开始模拟打字效果的函数
-    function changeTextWithTypingEffect() {
-        const pElement = document.querySelector('#home p'); // 选择要更改的<p>元素
-        const newText = "为了更伟大的利益"; // 新文本内容
-        const typingInterval = 150; // 打字间隔时间，单位毫秒
-        pElement.innerHTML = ''; // 清空原文本内容
-        typeWriter(pElement, newText, 0, typingInterval); // 开始模拟打字效果
-    }
-
-    // 在页面加载完毕后执行模拟打字效果
-    window.addEventListener('load', function() {
-        // 延迟一定时间后开始更改文本，给出视觉效果
-        setTimeout(changeTextWithTypingEffect, 1000); // 1秒后开始更改文本
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(changeText, 3000);
     });
 </script>
 
