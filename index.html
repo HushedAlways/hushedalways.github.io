@@ -157,17 +157,56 @@
     </div>
 </section>
 
-<section id="contact" class="container">
-    <h2>联系方式</h2>
-    <p>如有合作意向，请通过以下方式联系我：</p>
-    <p>Email: example@example.com</p>
-</section>
+        .social-icons {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-<footer>
-    <p>版权所有 &copy; 2024 HushedAlways</p>
-</footer>
+        .social-icons a {
+            margin: 0 10px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
 
-<script>
+        .social-icons a:hover {
+            color: #007bff;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            display: none;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    
+    <section id="contact" class="container">
+        <h2>联系方式</h2>
+        <p>如有合作意向，请通过以下方式联系我：</p>
+        <p>Email: example@example.com</p>
+        <div class="social-icons">
+            <a href="https://qq.com" target="_blank" title="QQ"><i class="fab fa-qq"></i></a>
+            <a href="https://github.com/YourGitHubUsername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <!-- 添加更多社交账户的链接 -->
+        </div>
+    </section>
+
+    <button class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <footer>
+        <p>版权所有 &copy; 2024 HushedAlways</p>
+    </footer>
+
+    <script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -187,5 +226,23 @@
     });
 </script>
 
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
 </body>
 </html>
+
