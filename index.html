@@ -45,10 +45,10 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
+            gap: 20px;
         }
         .project-card {
             background-color: #ffffff;
-            margin: 10px;
             width: calc(50% - 20px);
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
             border-radius: 5px;
@@ -60,38 +60,36 @@
         }
         .project-card img {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: auto;
+            border-bottom: 1px solid #eee;
         }
         .project-card-content {
             padding: 15px;
         }
         .skill-container {
-            display: flex;
-            flex-direction: column;
+            margin: 20px 0;
         }
         .skill {
             background-color: #ddd;
-            margin: 10px 0;
-            border-radius: 5px;
-            overflow: hidden;
+            border-radius: 20px;
             position: relative;
+            overflow: hidden;
         }
-        .skill::after {
-            content: '';
-            display: block;
-            height: 100%;
+        .skill-bar {
+            height: 20px;
             background-color: #007bff;
             width: 0%;
-            transition: width 2s ease;
         }
         .skill-text {
             position: absolute;
-            width: 100%;
-            text-align: center;
-            z-index: 1;
-            color: #fff;
-            font-weight: bold;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
         }
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -124,14 +122,17 @@
     <h2>关于我</h2>
     <p>简介自己的专业背景、技能和兴趣爱好。我的专长包括软件开发、云计算以及人工智能。</p>
     <div class="skill-container">
-        <div class="skill" data-skill="90%">
-            <span class="skill-text">软件开发 90%</span>
+        <div class="skill">
+            <div class="skill-bar" style="width: 90%;"></div>
+            <div class="skill-text">软件开发 90%</div>
         </div>
-        <div class="skill" data-skill="85%">
-            <span class="skill-text">云计算 85%</span>
+        <div class="skill">
+            <div class="skill-bar" style="width: 85%;"></div>
+            <div class="skill-text">云计算 85%</div>
         </div>
-        <div class="skill" data-skill="75%">
-            <span class="skill-text">人工智能 75%</span>
+        <div class="skill">
+            <div class="skill-bar" style="width: 75%;"></div>
+            <div class="skill-text">人工智能 75%</div>
         </div>
     </div>
 </section>
@@ -174,10 +175,14 @@
         });
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('scroll', () => {
         document.querySelectorAll('.skill').forEach(skill => {
-            const skillValue = skill.getAttribute('data-skill');
-            skill.querySelector('.skill::after').style.width = `${skillValue}%`;
+            const skillValue = skill.querySelector('.skill-bar').style.width;
+            const skillPosition = skill.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight;
+            if(skillPosition < screenPosition) {
+                skill.querySelector('.skill-bar').style.width = skillValue;
+            }
         });
     });
 </script>
