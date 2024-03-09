@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            color: #fff; /* 保留原有文本颜色 */
+            color: #333;
             background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -21,12 +21,6 @@
             color: #ffffff;
             text-align: center;
             padding: 1rem 0;
-        }
-        header::before {
-            content: '筚路蓝缕，栉风沐雨';
-            visibility: hidden; /* 隐藏占位符文本 */
-            display: block; /* 确保它占用空间 */
-            height: 0;
         }
         nav ul {
             list-style-type: none;
@@ -42,6 +36,33 @@
             color: white;
             text-decoration: none;
             font-weight: 600;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+        .blog-post {
+            margin-bottom: 2rem;
+        }
+        .blog-post h3 {
+            margin: 0.5rem 0;
+        }
+        .blog-post .date {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .social-icons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #007bff;
         }
         .back-to-top {
             position: fixed;
@@ -78,7 +99,6 @@
         <li><a href="#blog">博客</a></li>
     </ul>
 </nav>
-
 
 <section id="home" class="container">
     <h2>首页</h2>
@@ -125,6 +145,29 @@
 </footer>
 
 <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    const backToTopButton = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 100) {
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
     const titleElement = document.querySelector('header h1');
     const originalText = '筚路蓝缕，栉风沐雨';
     const newText = '为了更伟大的利益';
