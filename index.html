@@ -10,7 +10,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.7; /* Improved line height for better readability */
             color: #333;
             background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
             background-size: 400% 400%;
@@ -36,11 +36,18 @@
             color: white;
             text-decoration: none;
             font-weight: 600;
+            padding: 10px; /* Easier to tap on touch devices */
+            display: inline-block;
         }
         .container {
             max-width: 1100px;
             margin: auto;
             padding: 20px;
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
         }
         .blog-post {
             margin-bottom: 2rem;
@@ -100,43 +107,45 @@
     </ul>
 </nav>
 
-<section id="home" class="container">
-    <h2>首页</h2>
-    <p>你好</p>
-</section>
+<main>
+    <section id="home" class="container">
+        <h2>首页</h2>
+        <p>你好</p>
+    </section>
 
-<section id="about" class="container">
-    <h2>我们根本不是同一量级的存在</h2>
-    <p>我，HushedAlways，谜一般的存在，微光破晓工程组的主要缔造者和创始人之一，坐标重庆，当前初中生，Coder，中国少年先锋队队员。各种比赛零零碎碎也拿过一些奖项。永远忠于党和人民</p>
-</section>
+    <section id="about" class="container">
+        <h2>我们根本不是同一量级的存在</h2>
+        <p>我，HushedAlways，谜一般的存在，微光破晓工程组的主要缔造者和创始人之一，坐标重庆，当前初中生，Coder，中国少年先锋队队员。各种比赛零零碎碎也拿过一些奖项。永远忠于党和人民</p>
+    </section>
 
-<section id="projects" class="container">
-    <h2>项目展示</h2>
-    <p>史诗级项目</p>
-</section>
+    <section id="projects" class="container">
+        <h2>项目展示</h2>
+        <p>史诗级项目</p>
+    </section>
 
-<section id="contact" class="container">
-    <h2>联系方式</h2>
-    <p>如有合作意向，请通过以下方式联系我：</p>
-    <div class="social-icons">
-        <a href="//tencent://message/?uin=3531831289&Site=hushedalways.github.io&Menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a>
-        <a href="https://github.com/HushedAlways" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    </div>
-</section>
+    <section id="contact" class="container">
+        <h2>联系方式</h2>
+        <p>如有合作意向，请通过以下方式联系我：</p>
+        <div class="social-icons">
+            <a href="//tencent://message/?uin=3531831289&Site=hushedalways.github.io&Menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a>
+            <a href="https://github.com/HushedAlways" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
 
-<section id="blog" class="container">
-    <h2>博客</h2>
-    <div class="blog-post">
-        <h3>我的公开联系方式</h3>
-        <p class="date">2024年3月10日</p>
-        <p>QQ：3531831289，E-mail：kirin_initi@outlook.com...</p>
-    </div>
-    <div class="blog-post">
-        <h3>What am I doing?</h3>
-        <p class="date">2024年全年维护中</p>
-        <p>时刻忠于党、忠于祖国、忠于人民，为加入中国共产主义青年团而不懈努力。正在学习Python、Kali Linux...</p>
-    </div>
-</section>
+    <section id="blog" class="container">
+        <h2>博客</h2>
+        <div class="blog-post">
+            <h3>我的公开联系方式</h3>
+            <p class="date">2024年3月10日</p>
+            <p>QQ：3531831289，E-mail：kirin_initi@outlook.com...</p>
+        </div>
+        <div class="blog-post">
+            <h3>What am I doing?</h3>
+            <p class="date">2024年全年维护中</p>
+            <p>时刻忠于党、忠于祖国、忠于人民，为加入中国共产主义青年团而不懈努力。正在学习Python、Kali Linux...</p>
+        </div>
+    </section>
+</main>
 
 <button class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
@@ -166,43 +175,6 @@
             top: 0,
             behavior: 'smooth'
         });
-    });
-
-    const titleElement = document.querySelector('header h1');
-    const originalText = '筚路蓝缕，栉风沐雨';
-    const newText = '为了更伟大的利益';
-    let isShowingOriginalText = true;
-
-    function changeText() {
-        let currentText = titleElement.innerText;
-        const targetText = isShowingOriginalText ? newText : originalText;
-
-        const clearText = () => {
-            if (currentText.length > 0) {
-                currentText = currentText.substring(0, currentText.length - 1);
-                titleElement.innerText = currentText;
-                setTimeout(clearText, 100);
-            } else {
-                addText();
-            }
-        };
-
-        const addText = () => {
-            if (currentText.length < targetText.length) {
-                currentText = targetText.substring(0, currentText.length + 1);
-                titleElement.innerText = currentText;
-                setTimeout(addText, 100);
-            } else {
-                isShowingOriginalText = !isShowingOriginalText;
-                setTimeout(changeText, 3000);
-            }
-        };
-
-        clearText();
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(changeText, 3000);
     });
 </script>
 
