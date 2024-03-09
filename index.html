@@ -168,7 +168,7 @@
     // Array containing modern philosophical quotes
     const modernPhilosophicalQuotes = [
         "在混乱之中，也有机会。",
-        "我们实现明天的唯一限制，就是我们今天的怀疑。",
+        "与明镜前审视自我，于幻象中寻觅真相。",
         "挽狂澜于既倒，扶大厦之将倾",
         "将只手，补天裂",
         "成功不是终点，失败也不是终结：唯有勇气才是永恒。",
@@ -193,6 +193,19 @@
                 quoteContainer.textContent += quote.charAt(index);
                 index++;
                 setTimeout(displayNextLetter, 100); // Adjust speed here (milliseconds)
+            } else {
+                setTimeout(() => {
+                    clearText();
+                }, 3000); // Display for 3 seconds before clearing
+            }
+        };
+
+        const clearText = () => {
+            if (quoteContainer.textContent.length > 0) {
+                quoteContainer.textContent = quoteContainer.textContent.slice(0, -1);
+                setTimeout(clearText, 50);
+            } else {
+                displayModernPhilosophicalQuote();
             }
         };
 
@@ -200,7 +213,10 @@
     }
 
     document.addEventListener('DOMContentLoaded', displayModernPhilosophicalQuote);
+
+    // Remaining JavaScript code remains unchanged
 </script>
+
 
 </body>
 </html>
