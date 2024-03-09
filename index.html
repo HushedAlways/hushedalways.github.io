@@ -4,88 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HushedAlways的个人网站</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js"></link>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            scroll-behavior: smooth;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            color: #fff;
+            background-color: #f4f4f4;
+            color: #333;
         }
-
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         .navigation {
-            padding: 20px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            transition: background 0.3s ease;
         }
-
+        .navigation.scrolled {
+            background: rgba(0, 0, 0, 0.9);
+        }
         .navigation a {
             color: #fff;
-            padding: 10px 15px;
+            padding: 20px;
+            display: inline-block;
             text-decoration: none;
-            margin: 0 10px;
         }
-
         .section {
-            padding: 50px 0;
+            padding: 100px 20px 50px;
             text-align: center;
         }
-
-        .skills {
-            max-width: 600px;
-            margin: auto;
-            text-align: left;
-        }
-
-        .skill {
-            background-color: #ddd;
-            margin-bottom: 10px;
-            height: 30px;
-            line-height: 30px;
-            width: 0%;
-            transition: width 2s;
-        }
-
-        .slider {
-            position: relative;
-            max-width: 600px;
-            margin: auto;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-        }
-
-        .slides img {
-            width: 100%;
+        .modal {
             display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
         }
-
-        .slider button {
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            animation: animatetop 0.4s;
+        }
+        @keyframes animatetop {
+            from {top: -300px; opacity: 0}
+            to {top: 0; opacity: 1}
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
             cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 18px;
         }
-
-        .prev { left: 10px; }
-        .next { right: 10px; }
+        @media screen and (max-width: 768px) {
+            .navigation a {
+                padding: 10px;
+            }
+            .section {
+                padding: 60px 10px;
+            }
+        }
     </style>
 </head>
 <body>
 
-<div class="navigation">
+<div class="navigation" id="navbar">
     <a href="#home">首页</a>
     <a href="#about">关于我</a>
     <a href="#skills">技能</a>
@@ -94,57 +90,65 @@
 
 <div class="section" id="home">
     <h1>欢迎来到我的个人网站</h1>
+    <p>探索我的专业技能、项目经历和联系信息。</p>
 </div>
 
 <div class="section" id="about">
     <h2>关于我</h2>
-    <p>这里是关于我的一些介绍。</p>
+    <p>这里是我的个人和专业介绍。</p>
 </div>
 
 <div class="section" id="skills">
     <h2>技能</h2>
-    <div class="skills">
-        <div class="skill" data-skill="90%">HTML</div>
-        <div class="skill" data-skill="80%">CSS</div>
-        <div class="skill" data-skill="75%">JavaScript</div>
-    </div>
+    <canvas id="skillsChart"></canvas>
 </div>
 
 <div class="section" id="projects">
     <h2>项目</h2>
-    <div class="slider">
-        <div class="slides">
-            <img src="project1.jpg" alt="项目1">
-            <img src="project2.jpg" alt="项目2">
+    <button onclick="showModal()">查看项目详情</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>这里展示了我的项目详情。</p>
         </div>
-        <button class="prev">《</button>
-        <button class="next">》</button>
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-document.querySelectorAll('.skill').forEach(skill => {
-    skill.style.width = skill.getAttribute('data-skill');
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        document.getElementById("navbar").classList.add("scrolled");
+    } else {
+        document.getElementById("navbar").classList.remove("scrolled");
+    }
+}
+function showModal() {
+    document.getElementById("myModal").style.display = "block";
+}
+function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+}
+var ctx = document.getElementById('skillsChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+        labels: ['HTML', 'CSS', 'JavaScript', 'Python', 'Java'],
+        datasets: [{
+            label: '技能水平',
+            data: [5, 4, 4, 3, 2],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scale: {
+            ticks: { beginAtZero: true }
+        }
+    }
 });
-
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slides img');
-const showSlide = (index) => {
-    slides.forEach(slide => slide.style.display = 'none');
-    slides[index].style.display = 'block';
-};
-
-document.querySelector('.next').addEventListener('click', () => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-});
-
-document.querySelector('.prev').addEventListener('click', () => {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-});
-
-showSlide(currentSlide);
 </script>
 
 </body>
