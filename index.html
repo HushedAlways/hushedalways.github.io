@@ -4,140 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HushedAlways的个人网站</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: #FAFAFA;
-            color: #212121;
-            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
         }
-        .navigation {
+        .navbar {
             display: flex;
             justify-content: center;
-            background: #FFFFFF;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #004d99;
+            color: white;
+            padding: 14px 20px;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-        .navigation a {
-            color: #007BFF;
-            padding: 20px;
+        .navbar a {
+            color: white;
             text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .navigation a:hover {
-            color: #0056b3;
-        }
-        .section {
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .section:nth-child(odd) {
-            background: #FFFFFF;
-        }
-        .section:nth-child(even) {
-            background: #F0F0F0;
-        }
-        h1, h2 {
-            color: #007BFF;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 10% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
+            padding: 0 15px;
             font-weight: bold;
         }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
         }
-        .button {
-            background-color: #007BFF;
-            border: none;
-            color: white;
-            padding: 10px 20px;
+        h1, h2 {
             text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            transition: background-color 0.3s ease;
-            cursor: pointer;
-            border-radius: 5px;
+            margin: 20px 0;
         }
-        .button:hover {
-            background-color: #0056b3;
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        .project {
+            background: #f2f2f2;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            width: calc(50% - 10px);
+            transition: transform 0.2s;
+        }
+        .project:hover {
+            transform: scale(1.02);
+        }
+        .project h3 {
+            margin-top: 0;
+        }
+        .project p {
+            line-height: 1.5;
+        }
+        @media (max-width: 768px) {
+            .project {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="navigation">
+<div class="navbar">
     <a href="#home">首页</a>
     <a href="#about">关于我</a>
     <a href="#skills">技能</a>
     <a href="#projects">项目</a>
 </div>
 
-<div class="section" id="home">
+<div id="home" class="container">
     <h1>欢迎来到我的个人网站</h1>
     <p>探索我的专业技能、项目经历和联系信息。</p>
 </div>
 
-<div class="section" id="about">
+<div id="about" class="container">
     <h2>关于我</h2>
     <p>这里是我的个人和专业介绍。</p>
 </div>
 
-<div class="section" id="skills">
+<div id="skills" class="container">
     <h2>技能</h2>
-    <!-- 技能图表的占位符 -->
+    <p>展示我的技能图表。</p>
 </div>
 
-<div class="section" id="projects">
+<div id="projects" class="container">
     <h2>项目</h2>
-    <button class="button" onclick="showModal()">查看项目详情</button>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <p>这里展示了我的项目详情。</p>
+    <div class="projects">
+        <div class="project">
+            <h3>微光破晓合作Scratch3.0作品竣工</h3>
+            <p>这个项目是一个基于Scratch 3.0的合作作品，通过创新的交互设计展现了数字故事讲述的魅力。</p>
+        </div>
+        <div class="project">
+            <h3>人工智能安全取得根本保障</h3>
+            <p>本项目致力于探索和实现人工智能领域的安全机制，确保AI技术的发展能够在保障人类安全的基础上稳步推进。</p>
         </div>
     </div>
 </div>
-
-<script>
-function showModal() {
-    document.getElementById("myModal").style.display = "block";
-}
-function closeModal() {
-    document.getElementById("myModal").style.display = "none";
-}
-</script>
 
 </body>
 </html>
