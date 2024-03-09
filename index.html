@@ -168,7 +168,7 @@
     // Array containing modern philosophical quotes
     const modernPhilosophicalQuotes = [
         "在混乱之中，也有机会。",
-        "与明镜前审视自我，于幻象中寻觅真相。",
+        "我们实现明天的唯一限制，就是我们今天的怀疑。",
         "挽狂澜于既倒，扶大厦之将倾",
         "将只手，补天裂",
         "成功不是终点，失败也不是终结：唯有勇气才是永恒。",
@@ -205,7 +205,9 @@
                 quoteContainer.textContent = quoteContainer.textContent.slice(0, -1);
                 setTimeout(clearText, 50);
             } else {
-                displayModernPhilosophicalQuote();
+                setTimeout(() => {
+                    displayModernPhilosophicalQuote();
+                }, 1000); // Wait for 1 second before displaying the next quote
             }
         };
 
@@ -214,8 +216,47 @@
 
     document.addEventListener('DOMContentLoaded', displayModernPhilosophicalQuote);
 
-    // Remaining JavaScript code remains unchanged
+    // Re-added typing effect for the main header
+    const titleElement = document.getElementById('typing-header');
+    const originalText = '筚路蓝缕，栉风沐雨';
+    const newText = '为了更伟大的利益';
+    let isShowingOriginalText = true;
+
+    function changeText() {
+        let currentText = titleElement.innerText;
+        const targetText = isShowingOriginalText ? newText : originalText;
+
+        const clearText = () => {
+            if (currentText.length > 0) {
+                currentText = currentText.substring(0, currentText.length - 1);
+                titleElement.innerText = currentText;
+                setTimeout(clearText, 100);
+            } else {
+                addText();
+            }
+        };
+
+        const addText = () => {
+            if (currentText.length < targetText.length) {
+                currentText = targetText.substring(0, currentText.length + 1);
+                titleElement.innerText = currentText;
+                setTimeout(addText, 100);
+            } else {
+                isShowingOriginalText = !isShowingOriginalText;
+                setTimeout(() => {
+                    displayModernPhilosophicalQuote();
+                }, 2000); // Wait for 2 seconds before starting the philosophical quote
+            }
+        };
+
+        clearText();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(changeText, 3000);
+    });
 </script>
+
 
 
 </body>
