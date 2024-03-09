@@ -105,7 +105,48 @@
         <h2>唱唱反调</h2>
         <p>内容</p>
     </section>
+<script>
+    // Array containing modern philosophical quotes
+    const modernPhilosophicalQuotes = [
+        "在混乱之中，也有机会。",
+        "我们实现明天的唯一限制，就是我们今天的怀疑。",
+        "挽狂澜于既倒，扶大厦之将倾”,
+        "将只手，补天裂",
+        "成功不是终点，失败也不是终结：唯有勇气才是永恒。",
+        "我们唯一需要害怕的，是恐惧本身。",
+        "当你忙着制定其他计划时，生活就会发生。",
+        "相信你能做到，你就已经成功了一半。",
+        "不要等到铁热了才打，而是要通过敲打使它变热。",
+        "生命中最大的荣耀不在于从未跌倒，而在于每次跌倒后都能重新站起来。",
+        "唯一不可能的旅程，就是你从未开始的旅程。",
+        "成功就是从失败到失败，但热情不减。",
+    ];
 
+    // Function to display modern philosophical quotes letter by letter
+    function displayModernPhilosophicalQuote() {
+        const quoteContainer = document.getElementById('modern-philosophical-quote');
+        const randomIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
+        const quote = modernPhilosophicalQuotes[randomIndex];
+        let index = 0;
+
+        const displayNextLetter = () => {
+            if (index < quote.length) {
+                quoteContainer.textContent += quote.charAt(index);
+                index++;
+                setTimeout(displayNextLetter, 100); // Adjust speed here (milliseconds)
+            }
+        };
+
+        displayNextLetter();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        displayModernPhilosophicalQuote(); // Display quote when DOM content is loaded
+    });
+</script>
+
+
+    
     <section id="about" class="container">
         <h2>我们根本不是同一量级的存在</h2>
         <p>我，HushedAlways，谜一般的存在，微光破晓工程组的主要缔造者和创始人之一，坐标重庆，当前初中生，Coder，中国少年先锋队队员。各种比赛零零碎碎也拿过一些奖项。永远忠于党和人民</p>
