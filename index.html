@@ -137,5 +137,26 @@
     <p>版权所有 &copy; 2024 HushedAlways</p>
 </footer>
 
+<script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Skills animation
+    window.addEventListener('scroll', () => {
+        document.querySelectorAll('.skill').forEach(skill => {
+            const skillPosition = skill.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight;
+            if(skillPosition < screenPosition) {
+                skill.style.width = skill.textContent;
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
