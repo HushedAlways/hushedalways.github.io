@@ -115,25 +115,42 @@
         }
 
         /* 新添加的样式，用于逐字显示现代哲理 */
-    #modern-philosophical-quote {
-        color: #ffffff;
-        font-size: 1.2em;
-        margin-top: 10px;
-        white-space: nowrap;
-        overflow: hidden;
-        position: relative;
+#modern-philosophical-quote {
+    color: #ffffff;
+    font-size: 1.2em;
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+#modern-philosophical-quote::before {
+    content: '|'; /* 使用光标的样式，可以根据需要更改 */
+    color: #ffffff; /* 光标的颜色 */
+    display: inline-block;
+    margin-right: -0.15em; /* 根据字体和光标样式微调位置 */
+    animation: typing 3s steps(30) 1s forwards, blink-caret 0.5s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
     }
 
-    #modern-philosophical-quote::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 100%;
-        border-right: 3px solid #ffffff;
-        animation: typing 3s steps(30) 1s forwards, blink-caret 0.5s step-end infinite;
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent;
     }
 
+    50% {
+        border-color: #ffffff;
+    }
+}
 
         @keyframes typing {
             from {
