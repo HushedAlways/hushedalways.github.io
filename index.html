@@ -6,74 +6,85 @@
     <title>HushedAlways的个人网站</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-        }
-        header, footer {
-            background: rgba(0, 0, 0, 0.8);
-            color: #ffffff;
-            text-align: center;
-            padding: 1rem 0;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        nav ul li {
-            margin: 0 20px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
+            background-color: #f4f4f4;
         }
         .container {
             max-width: 1100px;
             margin: auto;
             padding: 20px;
         }
-        .skill-container, .project-gallery {
-            margin: 20px 0;
+        header, footer {
+            background-color: #333;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem 0;
         }
-        .skill {
-            background-color: #ddd;
-            color: #333;
-            text-align: right;
-            padding: 3px 0;
-            margin-top: 5px;
-            width: 0;
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .card {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-radius: 5px;
             overflow: hidden;
         }
-        .project {
-            margin-bottom: 20px;
-        }
-        .project img {
+        .card img {
             width: 100%;
-            max-width: 700px;
-            display: block;
-            margin: 20px auto;
-            border-radius: 10px;
+            height: 200px;
+            object-fit: cover;
         }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .card-content {
+            padding: 15px;
+            text-align: center;
+        }
+        .skill {
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px 0;
+            position: relative;
+        }
+        .skill-bar {
+            display: block;
+            height: 20px;
+            border-radius: 20px;
+            background-color: #5a5a5a;
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+        .skill-title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #fff;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Welcome to HushedAlways's Portfolio</h1>
+    <h1>欢迎来到HushedAlways的个人网站</h1>
 </header>
 
 <nav>
@@ -85,65 +96,43 @@
     </ul>
 </nav>
 
-<section id="home" class="container">
-    <h2>首页</h2>
-    <p>欢迎来到我的个人网站，这里展示了我的专业技能、过往项目和联系信息。</p>
-</section>
-
-<section id="about" class="container">
-    <h2>关于我</h2>
-    <p>简介自己的专业背景、技能和兴趣爱好。我的专长包括软件开发、云计算以及人工智能。</p>
-    <div class="skill-container">
-        <div class="skill" style="background-color: #4CAF50; width: 90%;">软件开发 90%</div>
-        <div class="skill" style="background-color: #2196F3; width: 85%;">云计算 85%</div>
-        <div class="skill" style="background-color: #f44336; width: 75%;">人工智能 75%</div>
-    </div>
-</section>
-
-<section id="projects" class="container">
+<div class="container" id="projects">
     <h2>项目展示</h2>
-    <div class="project">
-        <h3>微光破晓合作Scratch3.0作品竣工</h3>
-        <p>一个利用Scratch3.0开发的教育项目，旨在通过游戏化学习教授编程概念。</p>
-        <img src="scratch_project_image.jpg" alt="微光破晓项目">
+    <div class="card">
+        <img src="scratch_project_image.jpg" alt="微光破晓合作Scratch3.0作品竣工">
+        <div class="card-content">
+            <h3>微光破晓合作Scratch3.0作品竣工</h3>
+            <p>一个利用Scratch3.0开发的教育项目，旨在通过游戏化学习教授编程概念。</p>
+        </div>
     </div>
-    <div class="project">
-        <h3>人工智能安全取得根本保障</h3>
-        <p>该项目专注于人工智能安全领域，通过创新技术确保AI系统的可靠性和安全性。</p>
-        <img src="ai_security_project_image.jpg" alt="人工智能安全项目">
+    <div class="card">
+        <img src="ai_security_project_image.jpg" alt="人工智能安全取得根本保障">
+        <div class="card-content">
+            <h3>人工智能安全取得根本保障</h3>
+            <p>该项目专注于人工智能安全领域，通过创新技术确保AI系统的可靠性和安全性。</p>
+        </div>
     </div>
-</section>
+</div>
 
-<section id="contact" class="container">
-    <h2>联系方式</h2>
-    <p>如有合作意向，请通过以下方式联系我：</p>
-    <p>Email: example@example.com</p>
-</section>
+<div class="container" id="about">
+    <h2>关于我</h2>
+    <div class="skill">
+        <span class="skill-title">软件开发 90%</span>
+        <div class="skill-bar" style="width: 90%;"></div>
+    </div>
+    <div class="skill">
+        <span class="skill-title">云计算 85%</span>
+        <div class="skill-bar" style="width: 85%;"></div>
+    </div>
+    <div class="skill">
+        <span class="skill-title">人工智能 75%</span>
+        <div class="skill-bar" style="width: 75%;"></div>
+    </div>
+</div>
 
 <footer>
     <p>版权所有 &copy; 2024 HushedAlways</p>
 </footer>
-
-<script>
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-        });
-    });
-
-    // Skills animation
-    window.addEventListener('scroll', () => {
-        document.querySelectorAll('.skill').forEach(skill => {
-            const skillPosition = skill.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight;
-            if(skillPosition < screenPosition) {
-                skill.style.width = skill.textContent;
-            }
-        });
-    });
-</script>
 
 </body>
 </html>
