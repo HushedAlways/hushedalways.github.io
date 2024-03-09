@@ -4,34 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HushedAlways的个人网站</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Roboto', sans-serif;
+            background-color: #FAFAFA;
+            color: #212121;
+            scroll-behavior: smooth;
         }
         .navigation {
-            position: fixed;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            background: #FFFFFF;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
             z-index: 1000;
-            transition: background 0.3s ease;
-        }
-        .navigation.scrolled {
-            background: rgba(0, 0, 0, 0.9);
         }
         .navigation a {
-            color: #fff;
+            color: #007BFF;
             padding: 20px;
-            display: inline-block;
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .navigation a:hover {
+            color: #0056b3;
         }
         .section {
-            padding: 100px 20px 50px;
+            padding: 60px 20px;
             text-align: center;
+        }
+        .section:nth-child(odd) {
+            background: #FFFFFF;
+        }
+        .section:nth-child(even) {
+            background: #F0F0F0;
+        }
+        h1, h2 {
+            color: #007BFF;
         }
         .modal {
             display: none;
@@ -46,16 +58,11 @@
         }
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto;
+            margin: 10% auto;
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-            animation: animatetop 0.4s;
-        }
-        @keyframes animatetop {
-            from {top: -300px; opacity: 0}
-            to {top: 0; opacity: 1}
         }
         .close {
             color: #aaa;
@@ -69,19 +76,28 @@
             text-decoration: none;
             cursor: pointer;
         }
-        @media screen and (max-width: 768px) {
-            .navigation a {
-                padding: 10px;
-            }
-            .section {
-                padding: 60px 10px;
-            }
+        .button {
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
 
-<div class="navigation" id="navbar">
+<div class="navigation">
     <a href="#home">首页</a>
     <a href="#about">关于我</a>
     <a href="#skills">技能</a>
@@ -100,12 +116,12 @@
 
 <div class="section" id="skills">
     <h2>技能</h2>
-    <canvas id="skillsChart"></canvas>
+    <!-- 技能图表的占位符 -->
 </div>
 
 <div class="section" id="projects">
     <h2>项目</h2>
-    <button onclick="showModal()">查看项目详情</button>
+    <button class="button" onclick="showModal()">查看项目详情</button>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -114,41 +130,13 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-window.onscroll = function() {scrollFunction()};
-function scrollFunction() {
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        document.getElementById("navbar").classList.add("scrolled");
-    } else {
-        document.getElementById("navbar").classList.remove("scrolled");
-    }
-}
 function showModal() {
     document.getElementById("myModal").style.display = "block";
 }
 function closeModal() {
     document.getElementById("myModal").style.display = "none";
 }
-var ctx = document.getElementById('skillsChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'radar',
-    data: {
-        labels: ['HTML', 'CSS', 'JavaScript', 'Python', 'Java'],
-        datasets: [{
-            label: '技能水平',
-            data: [5, 4, 4, 3, 2],
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scale: {
-            ticks: { beginAtZero: true }
-        }
-    }
-});
 </script>
 
 </body>
