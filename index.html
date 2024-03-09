@@ -130,7 +130,7 @@
     </section>
 
     <section id="projects" class="container">
-        <h2>项目展示</h2>
+        <h2>项目速览</h2>
         <p>你所访问的这个网站就是一个史诗级项目</p>
     </section>
 
@@ -165,7 +165,6 @@
 </footer>
 
 <script>
-    // Array containing modern philosophical quotes
     const modernPhilosophicalQuotes = [
         "在混乱之中，也有机会。",
         "我们实现明天的唯一限制，就是我们今天的怀疑。",
@@ -181,7 +180,6 @@
         "成功就是从失败到失败，但热情不减。",
     ];
 
-    // Function to display modern philosophical quotes letter by letter
     function displayModernPhilosophicalQuote() {
         const quoteContainer = document.getElementById('modern-philosophical-quote');
         const randomIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
@@ -192,7 +190,7 @@
             if (index < quote.length) {
                 quoteContainer.textContent += quote.charAt(index);
                 index++;
-                setTimeout(displayNextLetter, 100); // Adjust speed here (milliseconds)
+                setTimeout(displayNextLetter, 100);
             } else {
                 setTimeout(() => {
                     clearText();
@@ -205,9 +203,7 @@
                 quoteContainer.textContent = quoteContainer.textContent.slice(0, -1);
                 setTimeout(clearText, 50);
             } else {
-                setTimeout(() => {
-                    displayModernPhilosophicalQuote();
-                }, 1000); // Wait for 1 second before displaying the next quote
+                displayModernPhilosophicalQuote();
             }
         };
 
@@ -216,46 +212,8 @@
 
     document.addEventListener('DOMContentLoaded', displayModernPhilosophicalQuote);
 
-    // Re-added typing effect for the main header
-    const titleElement = document.getElementById('typing-header');
-    const originalText = '筚路蓝缕，栉风沐雨';
-    const newText = '为了更伟大的利益';
-    let isShowingOriginalText = true;
-
-    function changeText() {
-        let currentText = titleElement.innerText;
-        const targetText = isShowingOriginalText ? newText : originalText;
-
-        const clearText = () => {
-            if (currentText.length > 0) {
-                currentText = currentText.substring(0, currentText.length - 1);
-                titleElement.innerText = currentText;
-                setTimeout(clearText, 100);
-            } else {
-                addText();
-            }
-        };
-
-        const addText = () => {
-            if (currentText.length < targetText.length) {
-                currentText = targetText.substring(0, currentText.length + 1);
-                titleElement.innerText = currentText;
-                setTimeout(addText, 100);
-            } else {
-                isShowingOriginalText = !isShowingOriginalText;
-                setTimeout(() => {
-                    displayModernPhilosophicalQuote();
-                }, 2000); // Wait for 2 seconds before starting the philosophical quote
-            }
-        };
-
-        clearText();
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(changeText, 3000);
-    });
 </script>
+
 
 
 
