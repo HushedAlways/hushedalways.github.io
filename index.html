@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HushedAlways的个人网站</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -41,55 +42,30 @@
             margin: auto;
             padding: 20px;
         }
-        .project-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 20px;
+        .social-icons {
+            text-align: center;
+            margin-top: 20px;
         }
-        .project-card {
-            background-color: #ffffff;
-            width: calc(50% - 20px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            border-radius: 5px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
+        .social-icons a {
+            margin: 0 10px;
+            color: #333;
+            transition: color 0.3s ease;
         }
-        .project-card:hover {
-            transform: translateY(-5px);
+        .social-icons a:hover {
+            color: #007bff;
         }
-        .project-card img {
-            width: 100%;
-            height: auto;
-            border-bottom: 1px solid #eee;
-        }
-        .project-card-content {
-            padding: 15px;
-        }
-        .skill-container {
-            margin: 20px 0;
-        }
-        .skill {
-            background-color: #ddd;
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        .skill-bar {
-            height: 20px;
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
             background-color: #007bff;
-            width: 0%;
-        }
-        .skill-text {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            display: none;
+            transition: opacity 0.3s ease;
         }
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -121,92 +97,31 @@
 <section id="about" class="container">
     <h2>关于我</h2>
     <p>简介自己的专业背景、技能和兴趣爱好。我的专长包括软件开发、云计算以及人工智能。</p>
-    <div class="skill-container">
-        <div class="skill">
-            <div class="skill-bar" style="width: 90%;"></div>
-            <div class="skill-text">软件开发 90%</div>
-        </div>
-        <div class="skill">
-            <div class="skill-bar" style="width: 85%;"></div>
-            <div class="skill-text">云计算 85%</div>
-        </div>
-        <div class="skill">
-            <div class="skill-bar" style="width: 75%;"></div>
-            <div class="skill-text">人工智能 75%</div>
-        </div>
-    </div>
 </section>
 
 <section id="projects" class="container">
     <h2>项目展示</h2>
-    <div class="project-gallery">
-        <div class="project-card">
-            <img src="scratch_project_image.jpg" alt="微光破晓合作Scratch3.0作品竣工">
-            <div class="project-card-content">
-                <h3>微光破晓合作Scratch3.0作品竣工</h3>
-                <p>一个利用Scratch3.0开发的教育项目，旨在通过游戏化学习教授编程概念。</p>
-            </div>
-        </div>
-        <div class="project-card">
-            <img src="ai_security_project_image.jpg" alt="人工智能安全取得根本保障">
-            <div class="project-card-content">
-                <h3>人工智能安全取得根本保障</h3>
-                <p>该项目专注于人工智能安全领域，通过创新技术确保AI系统的可靠性和安全性。</p>
-            </div>
-        </div>
+    <p>介绍几个代表性项目。</p>
+    <!-- 项目卡片可以根据之前的示例进行添加 -->
+</section>
+
+<section id="contact" class="container">
+    <h2>联系方式</h2>
+    <p>如有合作意向，请通过以下方式联系我：</p>
+    <div class="social-icons">
+        <a href="https://qq.com" target="_blank" title="QQ"><i class="fab fa-qq"></i></a>
+        <a href="https://github.com/YourGitHubUsername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <!-- 添加更多社交账户的链接 -->
     </div>
 </section>
 
-        .social-icons {
-            text-align: center;
-            margin-top: 20px;
-        }
+<button class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
-        .social-icons a {
-            margin: 0 10px;
-            color: #333;
-            transition: color 0.3s ease;
-        }
+<footer>
+    <p>版权所有 &copy; 2024 HushedAlways</p>
+</footer>
 
-        .social-icons a:hover {
-            color: #007bff;
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            cursor: pointer;
-            display: none;
-            transition: opacity 0.3s ease;
-        }
-    </style>
-</head>
-<body>
-    
-    <section id="contact" class="container">
-        <h2>联系方式</h2>
-        <p>如有合作意向，请通过以下方式联系我：</p>
-        <p>Email: example@example.com</p>
-        <div class="social-icons">
-            <a href="https://qq.com" target="_blank" title="QQ"><i class="fab fa-qq"></i></a>
-            <a href="https://github.com/YourGitHubUsername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <!-- 添加更多社交账户的链接 -->
-        </div>
-    </section>
-
-    <button class="back-to-top"><i class="fas fa-arrow-up"></i></button>
-
-    <footer>
-        <p>版权所有 &copy; 2024 HushedAlways</p>
-    </footer>
-
-    <script>
+<script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -214,35 +129,22 @@
         });
     });
 
+    const backToTopButton = document.querySelector('.back-to-top');
     window.addEventListener('scroll', () => {
-        document.querySelectorAll('.skill').forEach(skill => {
-            const skillValue = skill.querySelector('.skill-bar').style.width;
-            const skillPosition = skill.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight;
-            if(skillPosition < screenPosition) {
-                skill.querySelector('.skill-bar').style.width = skillValue;
-            }
+        if (window.pageYOffset > 100) {
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     });
 </script>
 
-        const backToTopButton = document.querySelector('.back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 100) {
-                backToTopButton.style.display = 'block';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
-        });
-
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
-
 </body>
 </html>
-
