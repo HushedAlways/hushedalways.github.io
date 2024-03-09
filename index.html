@@ -94,7 +94,7 @@
 <body>
 
 <header>
-    <h1>筚路蓝缕，栉风沐雨</h1>
+    <h1 id="typing-header">筚路蓝缕，栉风沐雨</h1>
 </header>
 
 <nav>
@@ -175,6 +175,44 @@
             top: 0,
             behavior: 'smooth'
         });
+    });
+
+    // Re-added typing effect
+    const titleElement = document.getElementById('typing-header');
+    const originalText = '筚路蓝缕，栉风沐雨';
+    const newText = '为了更伟大的利益';
+    let isShowingOriginalText = true;
+
+    function changeText() {
+        let currentText = titleElement.innerText;
+        const targetText = isShowingOriginalText ? newText : originalText;
+
+        const clearText = () => {
+            if (currentText.length > 0) {
+                currentText = currentText.substring(0, currentText.length - 1);
+                titleElement.innerText = currentText;
+                setTimeout(clearText, 100);
+            } else {
+                addText();
+            }
+        };
+
+        const addText = () => {
+            if (currentText.length < targetText.length) {
+                currentText = targetText.substring(0, currentText.length + 1);
+                titleElement.innerText = currentText;
+                setTimeout(addText, 100);
+            } else {
+                isShowingOriginalText = !isShowingOriginalText;
+                setTimeout(changeText, 3000);
+            }
+        };
+
+        clearText();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(changeText, 3000);
     });
 </script>
 
