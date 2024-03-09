@@ -41,27 +41,57 @@
             margin: auto;
             padding: 20px;
         }
-        .skill-container, .project-gallery {
-            margin: 20px 0;
+        .project-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .project-card {
+            background-color: #ffffff;
+            margin: 10px;
+            width: calc(50% - 20px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .project-card-content {
+            padding: 15px;
+        }
+        .skill-container {
+            display: flex;
+            flex-direction: column;
         }
         .skill {
             background-color: #ddd;
-            color: #333;
-            text-align: right;
-            padding: 3px 0;
-            margin-top: 5px;
-            width: 0;
+            margin: 10px 0;
+            border-radius: 5px;
             overflow: hidden;
+            position: relative;
         }
-        .project {
-            margin-bottom: 20px;
-        }
-        .project img {
-            width: 100%;
-            max-width: 700px;
+        .skill::after {
+            content: '';
             display: block;
-            margin: 20px auto;
-            border-radius: 10px;
+            height: 100%;
+            background-color: #007bff;
+            width: 0%;
+            transition: width 2s ease;
+        }
+        .skill-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+            color: #fff;
+            font-weight: bold;
         }
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -86,59 +116,57 @@
 </nav>
 
 <section id="home" class="container">
-<header>
-    <h1>欢迎来到HushedAlways的个人网站</h1>
-</header>
+    <h2>首页</h2>
+    <p>欢迎来到我的个人网站，这里展示了我的专业技能、过往项目和联系信息。</p>
+</section>
 
-<nav>
-    <ul>
-        <li><a href="#home">首页</a></li>
-        <li><a href="#about">关于我</a></li>
-        <li><a href="#projects">项目展示</a></li>
-        <li><a href="#contact">联系方式</a></li>
-    </ul>
-</nav>
-
-<div class="container" id="projects">
-    <h2>项目展示</h2>
-    <div class="card">
-        <img src="scratch_project_image.jpg" alt="微光破晓合作Scratch3.0作品竣工">
-        <div class="card-content">
-            <h3>微光破晓合作Scratch3.0作品竣工</h3>
-            <p>一个利用Scratch3.0开发的教育项目，旨在通过游戏化学习教授编程概念。</p>
-        </div>
-    </div>
-    <div class="card">
-        <img src="ai_security_project_image.jpg" alt="人工智能安全取得根本保障">
-        <div class="card-content">
-            <h3>人工智能安全取得根本保障</h3>
-            <p>该项目专注于人工智能安全领域，通过创新技术确保AI系统的可靠性和安全性。</p>
-        </div>
-    </div>
-</div>
-
-<div class="container" id="about">
+<section id="about" class="container">
     <h2>关于我</h2>
-    <div class="skill">
-        <span class="skill-title">软件开发 90%</span>
-        <div class="skill-bar" style="width: 90%;"></div>
+    <p>简介自己的专业背景、技能和兴趣爱好。我的专长包括软件开发、云计算以及人工智能。</p>
+    <div class="skill-container">
+        <div class="skill" data-skill="90%">
+            <span class="skill-text">软件开发 90%</span>
+        </div>
+        <div class="skill" data-skill="85%">
+            <span class="skill-text">云计算 85%</span>
+        </div>
+        <div class="skill" data-skill="75%">
+            <span class="skill-text">人工智能 75%</span>
+        </div>
     </div>
-    <div class="skill">
-        <span class="skill-title">云计算 85%</span>
-        <div class="skill-bar" style="width: 85%;"></div>
+</section>
+
+<section id="projects" class="container">
+    <h2>项目展示</h2>
+    <div class="project-gallery">
+        <div class="project-card">
+            <img src="scratch_project_image.jpg" alt="微光破晓合作Scratch3.0作品竣工">
+            <div class="project-card-content">
+                <h3>微光破晓合作Scratch3.0作品竣工</h3>
+                <p>一个利用Scratch3.0开发的教育项目，旨在通过游戏化学习教授编程概念。</p>
+            </div>
+        </div>
+        <div class="project-card">
+            <img src="ai_security_project_image.jpg" alt="人工智能安全取得根本保障">
+            <div class="project-card-content">
+                <h3>人工智能安全取得根本保障</h3>
+                <p>该项目专注于人工智能安全领域，通过创新技术确保AI系统的可靠性和安全性。</p>
+            </div>
+        </div>
     </div>
-    <div class="skill">
-        <span class="skill-title">人工智能 75%</span>
-        <div class="skill-bar" style="width: 75%;"></div>
-    </div>
-</div>
+</section>
+
+<section id="contact" class="container">
+    <h2>联系方式</h2>
+    <p>如有合作意向，请通过以下方式联系我：</p>
+    <p>Email: example@example.com</p>
+</section>
 
 <footer>
     <p>版权所有 &copy; 2024 HushedAlways</p>
 </footer>
 
 <script>
-    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -146,14 +174,10 @@
         });
     });
 
-    // Skills animation
-    window.addEventListener('scroll', () => {
+    document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.skill').forEach(skill => {
-            const skillPosition = skill.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight;
-            if(skillPosition < screenPosition) {
-                skill.style.width = skill.textContent;
-            }
+            const skillValue = skill.getAttribute('data-skill');
+            skill.querySelector('.skill::after').style.width = `${skillValue}%`;
         });
     });
 </script>
