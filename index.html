@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,8 @@
             animation: gradientBG 15s ease infinite;
         }
 
-        header, footer {
+        header,
+        footer {
             background: rgba(0, 0, 0, 0.8);
             color: #ffffff;
             text-align: center;
@@ -30,6 +32,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            margin: 0;
         }
 
         nav ul li {
@@ -42,6 +46,11 @@
             font-weight: 600;
             padding: 10px;
             display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #007bff;
         }
 
         .container {
@@ -60,7 +69,10 @@
             margin-bottom: 2rem;
         }
 
-        .blog-post h3, .blog-post .date, .container h2, .container p {
+        .blog-post h3,
+        .blog-post .date,
+        .container h2,
+        .container p {
             color: #ffffff;
         }
 
@@ -89,9 +101,17 @@
         }
 
         @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* 新添加的样式，用于逐字显示现代哲理 */
@@ -99,131 +119,205 @@
             color: #ffffff;
             font-size: 1.2em;
             margin-top: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #ffffff;
+            animation: typing 3s steps(30) 1s forwards, blink-caret 0.5s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #ffffff;
+            }
+        }
+
+        /* 新添加的样式，用于半透明卡片 */
+        .card {
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 300px;
+            margin: 10px;
+            display: inline-block;
+            border-radius: 5px;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .card-container {
+            padding: 2px 16px;
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1 id="typing-header">筚路蓝缕，栉风沐雨</h1>
-</header>
+    <header>
+        <h1 id="typing-header">筚路蓝缕，栉风沐雨</h1>
+    </header>
 
-<nav>
-    <ul>
-        <li><a href="#home">唱唱反调</a></li>
-        <li><a href="#about">指明身世</a></li>
-        <li><a href="#projects">项目封存</a></li>
-        <li><a href="#contact">建立联系</a></li>
-        <li><a href="#blog">再唱反调</a></li>
-    </ul>
-</nav>
+    <nav>
+        <ul>
+            <li><a href="#home">唱唱反调</a></li>
+            <li><a href="#about">指明身世</a></li>
+            <li><a href="#projects">项目封存</a></li>
+            <li><a href="#contact">建立联系</a></li>
+            <li><a href="#blog">再唱反调</a></li>
+        </ul>
+    </nav>
 
-<main>
-    <section id="home" class="container">
-        <h2>唱唱反调</h2>
-        <p id="modern-philosophical-quote"></p> <!-- Placeholder for displaying modern philosophical quotes -->
-    </section>
+    <main>
+        <section id="home" class="container">
+            <h2>唱唱反调</h2>
+            <p id="modern-philosophical-quote"></p> <!-- Placeholder for displaying modern philosophical quotes -->
+        </section>
 
-    <section id="about" class="container">
-        <h2>我们根本不是同一量级的存在</h2>
-        <p>我，HushedAlways，谜一般的存在，微光破晓工程组的主要缔造者和创始人之一，坐标重庆，当前初中生，并且是一名永远忠于党和人民的Coder与中国少年先锋队队员。各种编程、跆拳道、征文比赛等都零零碎碎拿过一些奖项。</p>
-    </section>
+        <section id="about" class="container">
+            <h2>我们根本不是同一量级的存在</h2>
+            <p>我，HushedAlways，谜一般的存在，微光破晓工程组的主要缔造者和创始人之一，坐标重庆，当前初中生，并且是一名永远忠于党和人民的Coder与中国少年先锋队队员。各种编程、跆拳道、征文比赛等都零零碎碎拿过一些奖项。</p>
+        </section>
 
-    <section id="light-project" class="container">
-        <h2>微光破晓工程组</h2>
-        <p>没有人能够熄灭满天的星光，因此每一位开发者，都是我们要汇聚的星星之火！<br>今天，星星之火将汇聚成漫天的璀璨星河！</p>
-        <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=U3suwc2vJhTW1qOVUUqC331DFaFZHEeT&jump_from=webapi&authKey=fr9w8LfeEX8azyUoHM8H+gqoCPdJDsW91f7Fgb6AgmHkft3tyE2Cr24f2zgasZtV">
-            <button>加入我们</button>
-</a>
+        <section id="light-project" class="container">
+            <h2>微光破晓工程组</h2>
+            <p>没有人能够熄灭满天的星光，因此每一位开发者，都是我们要汇聚的星星之火！<br>今天，星星之火将汇聚成漫天的璀璨星河！</p>
+            <a target="_blank"
+                href="https://qm.qq.com/cgi-bin/qm/qr?k=U3suwc2vJhTW1qOVUUqC331DFaFZHEeT&jump_from=webapi&authKey=fr9w8LfeEX8azyUoHM8H+gqoCPdJDsW91f7Fgb6AgmHkft3tyE2Cr24f2zgasZtV">
+                <button>加入我们</button>
+            </a>
+        </section>
 
-    </section>
+        <section id="projects" class="container">
+            <h2>项目速览</h2>
+            <!-- 示例项目卡片 -->
+            <div class="card" onclick="openModal('modal1')">
+                <img src="project1.jpg" alt="竣工项目">
+                <div class="card-container">
+                    <h4><b>工作室静态官网组建</b></h4>
+                    <p>如你所见，这个网站就是微光破晓工程组的第一个集体代码编程的成品项目</p>
+                </div>
+            </div>
+            <!-- Modal1 -->
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal1')">&times;</span>
+                    <h2>工作室静态官网组建项目 详细信息</h2>
+                    <p>利用GitHub Pages进行托管，用100%自主开发的HTML语言进行编写而成<br>主要参与者（按照贡献排序）：HushedAlways、h4xx0rz、城木</p>
+                </div>
+            </div>
+        </section>
 
-    
-    <section id="projects" class="container">
-        <h2>项目速览</h2>
-        <p>你所访问的这个网站就是一个史诗级项目<br>往期项目：合作提供微光破晓第一次全网招新视频（bilibili上已发布）</p>
-    </section>
+        <section id="contact" class="container">
+            <h2>建立联系</h2>
+            <p>你可以通过以下方式联系我：</p>
+            <div class="social-icons">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=3531831289&site=qq&menu=yes" title="QQ"><i
+                        class="fab fa-qq"></i></a>
+                <a href="https://github.com/HushedAlways" target="_blank" title="GitHub"><i
+                        class="fab fa-github"></i></a>
+            </div>
+        </section>
 
-    <section id="contact" class="container">
-        <h2>建立联系</h2>
-        <p>你可以通过以下方式联系我：</p>
-        <div class="social-icons">
-            <a href="http://wpa.qq.com/msgrd?v=3&uin=3531831289&site=qq&menu=yes" title="QQ"><i class="fab fa-qq"></i></a>
-            <a href="https://github.com/HushedAlways" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        </div>
-    </section>
+        <section id="blog" class="container">
+            <h2>再唱反调</h2>
+            <div class="blog-post">
+                <h3>我的公开联系方式</h3>
+                <p class="date">2024年3月10日</p>
+                <p>QQ：3531831289，E-mail：kirin_initi@outlook.com...</p>
+            </div>
+            <div class="blog-post">
+                <h3>What am I doing?</h3>
+                <p class="date">2024年全年维护中</p>
+                <p>时刻忠于党、忠于祖国、忠于人民，为加入中国共产主义青年团而不懈努力。正在学习Python、Kali Linux...</p>
+            </div>
+        </section>
+    </main>
 
-    <section id="blog" class="container">
-        <h2>再唱反调</h2>
-        <div class="blog-post">
-            <h3>我的公开联系方式</h3>
-            <p class="date">2024年3月10日</p>
-            <p>QQ：3531831289，E-mail：kirin_initi@outlook.com...</p>
-        </div>
-        <div class="blog-post">
-            <h3>What am I doing?</h3>
-            <p class="date">2024年全年维护中</p>
-            <p>时刻忠于党、忠于祖国、忠于人民，为加入中国共产主义青年团而不懈努力。正在学习Python、Kali Linux...</p>
-        </div>
-    </section>
-</main>
+    <button class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
-<button class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+    <footer>
+        <p>致敬每一位开发者，还有——你<br>版权所有 &copy; 2024 HushedAlways</p>
+    </footer>
 
-<footer>
-    <p>致敬每一位开发者，还有——你<br>版权所有 &copy; 2024 HushedAlways</p>
-</footer>
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
 
-<script>
-    const modernPhilosophicalQuotes = [
-        "在混乱之中，也有机会。",
-        "我们实现明天的唯一限制，就是我们今天的怀疑。",
-        "挽狂澜于既倒，扶大厦之将倾",
-        "将只手，补天裂",
-        "成功不是终点，失败也不是终结：唯有勇气才是永恒。",
-        "我们唯一需要害怕的，是恐惧本身。",
-        "当你忙着制定其他计划时，生活就会发生。",
-        "相信你能做到，你就已经成功了一半。",
-        "不要等到铁热了才打，而是要通过敲打使它变热。",
-        "生命中最大的荣耀不在于从未跌倒，而在于每次跌倒后都能重新站起来。",
-        "唯一不可能的旅程，就是你从未开始的旅程。",
-        "成功就是从失败到失败，但热情不减。",
-    ];
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
 
-    function displayModernPhilosophicalQuote() {
-        const quoteContainer = document.getElementById('modern-philosophical-quote');
-        const randomIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
-        const quote = modernPhilosophicalQuotes[randomIndex];
-        let index = 0;
+        const modernPhilosophicalQuotes = [
+            "在混乱之中，也有机会。",
+            "我们实现明天的唯一限制，就是我们今天的怀疑。",
+            "挽狂澜于既倒，扶大厦之将倾",
+            "将只手，补天裂",
+            "成功不是终点，失败也不是终结：唯有勇气才是永恒。",
+            "我们唯一需要害怕的，是恐惧本身。",
+            "当你忙着制定其他计划时，生活就会发生。",
+            "相信你能做到，你就已经成功了一半。",
+            "不要等到铁热了才打，而是要通过敲打使它变热。",
+            "生命中最大的荣耀不在于从未跌倒，而在于每次跌倒后都能重新站起来。",
+            "唯一不可能的旅程，就是你从未开始的旅程。",
+            "成功就是从失败到失败，但热情不减。",
+        ];
 
-        const displayNextLetter = () => {
-            if (index < quote.length) {
-                quoteContainer.textContent += quote.charAt(index);
-                index++;
-                setTimeout(displayNextLetter, 100);
-            } else {
-                setTimeout(() => {
-                    clearText();
-                }, 3000); // Display for 3 seconds before clearing
-            }
-        };
+        function displayModernPhilosophicalQuote() {
+            const quoteContainer = document.getElementById('modern-philosophical-quote');
+            const randomIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
+            const quote = modernPhilosophicalQuotes[randomIndex];
+            let index = 0;
 
-        const clearText = () => {
-            if (quoteContainer.textContent.length > 0) {
-                quoteContainer.textContent = quoteContainer.textContent.slice(0, -1);
-                setTimeout(clearText, 50);
-            } else {
-                displayModernPhilosophicalQuote();
-            }
-        };
+            const displayNextLetter = () => {
+                if (index < quote.length) {
+                    quoteContainer.textContent += quote.charAt(index);
+                    index++;
+                    setTimeout(displayNextLetter, 100);
+                } else {
+                    setTimeout(() => {
+                        clearText();
+                    }, 3000); // Display for 3 seconds before clearing
+                }
+            };
 
-        displayNextLetter();
-    }
+            const clearText = () => {
+                if (quoteContainer.textContent.length > 0) {
+                    quoteContainer.textContent = quoteContainer.textContent.slice(0, -1);
+                    setTimeout(clearText, 50);
+                } else {
+                    displayModernPhilosophicalQuote();
+                }
+            };
 
-    document.addEventListener('DOMContentLoaded', displayModernPhilosophicalQuote);
+            displayNextLetter();
+        }
 
-</script>
+        document.addEventListener('DOMContentLoaded', displayModernPhilosophicalQuote);
 
+    </script>
 
 </body>
+
 </html>
