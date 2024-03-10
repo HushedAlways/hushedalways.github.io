@@ -252,12 +252,12 @@
 
         <section id="projects" class="container">
             <h2>项目速览</h2>
-            <!-- 示例项目卡片 -->
+            <!-- 项目卡片 -->
             <div class="card" onclick="openModal('modal1')">
                 <img src="project1.jpg" alt="竣工项目">
                 <div class="card-container">
-                    <h4><b>工作室静态官网组建</b></h4>
-                    <p>如你所见，这个网站就是微光破晓工程组的第一个集体代码编程的成品项目</p>
+                    <h4><b>个人静态官网组建</b></h4>
+                    <p>如你所见，这个网站就是我的第一个具有完全自主知识产权的代码编程的成品项目</p>
                 </div>
             </div>
         </section>
@@ -278,12 +278,12 @@
             <div class="blog-post">
                 <h3>我的公开联系方式</h3>
                 <p class="date">2024年3月10日</p>
-                <p>QQ：3531831289，E-mail：kirin_initi@outlook.com...</p>
+                <p>QQ：3531831289，E-mail：kirin_initi@outlook.com</p>
             </div>
             <div class="blog-post">
                 <h3>What am I doing?</h3>
                 <p class="date">2024年全年维护中</p>
-                <p>时刻忠于党、忠于祖国、忠于人民，为加入中国共产主义青年团而不懈努力。正在学习Python、Kali Linux...</p>
+                <p>时刻忠于党、忠于祖国、忠于人民，为加入中国共产主义青年团而不懈努力。正在学习Python、Kali Linux</p>
             </div>
         </section>
     </main>
@@ -348,28 +348,24 @@
             displayNextLetter();
         }
 
-        document.addEventListener('DOMContentLoaded', displayModernPhilosophicalQuote);
+document.addEventListener('DOMContentLoaded', () => {
+    displayModernPhilosophicalQuote(); // 这个函数维持原样，用于展示哲理名言
 
-        // 通过DOM获取标题元素
-const typingHeaderElement = document.getElementById('typing-header');
+    const headerText = "筚路蓝缕，栉风沐雨";
+    const typingHeaderElement = document.getElementById('typing-header');
+    let currentIndex = 0;
 
-// 设置初始文本
-typingHeaderElement.textContent = '';
-
-// 设置打字的速度
-const typingSpeed = 100; // 每个字符的打字间隔时间（毫秒）
-
-// 创建计时器模拟打字效果
-let charIndexHeader = 0;
-const typingIntervalHeader = setInterval(() => {
-    typingHeaderElement.textContent += "筚路蓝缕，栉风沐雨"[charIndexHeader];
-    charIndexHeader++;
-
-    // 如果已经显示完整的文本，清除计时器
-    if (charIndexHeader === "筚路蓝缕，栉风沐雨".length) {
-        clearInterval(typingIntervalHeader);
+    function typeCharacter() {
+        if (currentIndex < headerText.length) {
+            typingHeaderElement.textContent += headerText.charAt(currentIndex);
+            currentIndex++;
+            setTimeout(typeCharacter, 100); // 调整此值以改变打字速度
+        }
     }
-}, typingSpeed);
+
+    typeCharacter(); // 开始打字效果
+});
+
 
     </script>
 
