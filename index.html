@@ -311,8 +311,8 @@
 
         document.addEventListener('DOMContentLoaded', displayModernPhilosophicalQuote);
 
-        function displayModernPhilosophicalQuote() {
-            const modernPhilosophicalQuotes = [
+function typeAndClearQuotes() {
+    const quotes = [
                 "于明镜前审视自我，于幻象中寻觅真相。",
                 "我们实现明天的唯一限制，就是我们今天的怀疑。",
                 "挽狂澜于既倒，扶大厦之将倾",
@@ -325,7 +325,32 @@
                 "生命中最大的荣耀不在于从未跌倒，而在于每次跌倒后都能重新站起来。",
                 "唯一不可能的旅程，就是你从未涉足的道路。",
                 "成功就是从失败到失败，但热情不减。",
-            ];
+    ];
+    let quoteIndex = 0;
+
+    function typeQuote(quote, charIndex) {
+        if (charIndex < quote.length) {
+            document.getElementById('modern-philosophical-quote').textContent += quote.charAt(charIndex);
+            setTimeout(() => typeQuote(quote, charIndex + 1), 50); // Adjust typing speed here
+        } else {
+            setTimeout(() => clearQuote(quote), 2000); // Adjust wait time here
+        }
+    }
+
+    function clearQuote(quote) {
+        if (quote.length > 0) {
+            document.getElementById('modern-philosophical-quote').textContent = quote.substring(0, quote.length - 1);
+            setTimeout(() => clearQuote(document.getElementById('modern-philosophical-quote').textContent), 50); // Adjust clearing speed here
+        } else {
+            quoteIndex = (quoteIndex + 1) % quotes.length; // Move to the next quote
+            typeQuote(quotes[quoteIndex], 0);
+        }
+    }
+
+    typeQuote(quotes[quoteIndex], 0); // Start typing the first quote
+}
+
+document.addEventListener('DOMContentLoaded', typeAndClearQuotes);
             const quoteContainer = document.getElementById('modern-philosophical-quote');
             const randomIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
             quoteContainer.textContent = modernPhilosophicalQuotes[randomIndex];
