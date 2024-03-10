@@ -114,52 +114,6 @@
             }
         }
 
-        /* 新添加的样式，用于逐字显示现代哲理 */
-        
-@keyframes typing {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-
-@keyframes blink-caret {
-    from,
-    to {
-        border-color: transparent;
-    }
-
-    50% {
-        border-color: #ffffff;
-    }
-}
-
-
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 100%;
-            }
-        }
-
-        @keyframes blink-caret {
-            from,
-            to {
-                border-color: transparent;
-            }
-
-            50% {
-                border-color: #ffffff;
-            }
-        }
-
-        /* 新添加的样式，用于半透明卡片 */
         .card {
             background-color: rgba(255, 255, 255, 0.7);
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -184,40 +138,39 @@
         }
 
         #typing-header {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid #ffffff; /* 光标效果 */
-    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-}
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #ffffff; /* 光标效果 */
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
 
-@keyframes typing {
-    from {
-        width: 0;
-    }
+        @keyframes typing {
+            from {
+                width: 0;
+            }
 
-    to {
-        width: 100%;
-    }
-}
+            to {
+                width: 100%;
+            }
+        }
 
-@keyframes blink-caret {
-    from,
-    to {
-        border-color: transparent;
-    }
+        @keyframes blink-caret {
+            from,
+            to {
+                border-color: transparent;
+            }
 
-    50% {
-        border-color: #ffffff;
-    }
-}
-
+            50% {
+                border-color: #ffffff;
+            }
+        }
     </style>
 </head>
 
 <body>
 
     <header>
-        <h1 id="typing-header">筚路蓝缕，栉风沐雨</h1>
+        <h1 id="typing-header"></h1>
     </header>
 
     <nav>
@@ -295,78 +248,21 @@
     </footer>
 
     <script>
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = "block";
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const headerText = "筚路蓝缕，栉风沐雨";
+            const typingHeaderElement = document.getElementById('typing-header');
+            let currentIndex = 0;
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
-        }
-
-        const modernPhilosophicalQuotes = [
-            "在混乱之中，也有机会。",
-            "我们实现明天的唯一限制，就是我们今天的怀疑。",
-            "挽狂澜于既倒，扶大厦之将倾",
-            "将只手，补天裂",
-            "成功不是终点，失败也不是终结：唯有勇气才是永恒。",
-            "我们唯一需要害怕的，是恐惧本身。",
-            "当你忙着制定其他计划时，生活就会发生。",
-            "相信你能做到，你就已经成功了一半。",
-            "不要等到铁热了才打，而是要通过敲打使它变热。",
-            "生命中最大的荣耀不在于从未跌倒，而在于每次跌倒后都能重新站起来。",
-            "唯一不可能的旅程，就是你从未开始的旅程。",
-            "成功就是从失败到失败，但热情不减。",
-        ];
-
-        function displayModernPhilosophicalQuote() {
-            const quoteContainer = document.getElementById('modern-philosophical-quote');
-            const randomIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
-            const quote = modernPhilosophicalQuotes[randomIndex];
-            let index = 0;
-
-            const displayNextLetter = () => {
-                if (index < quote.length) {
-                    quoteContainer.textContent += quote.charAt(index);
-                    index++;
-                    setTimeout(displayNextLetter, 100);
-                } else {
-                    setTimeout(() => {
-                        clearText();
-                    }, 3000); // Display for 3 seconds before clearing
+            function typeCharacter() {
+                if (currentIndex < headerText.length) {
+                    typingHeaderElement.textContent += headerText.charAt(currentIndex);
+                    currentIndex++;
+                    setTimeout(typeCharacter, 100); // Adjust speed here
                 }
-            };
+            }
 
-            const clearText = () => {
-                if (quoteContainer.textContent.length > 0) {
-                    quoteContainer.textContent = quoteContainer.textContent.slice(0, -1);
-                    setTimeout(clearText, 50);
-                } else {
-                    displayModernPhilosophicalQuote();
-                }
-            };
-
-            displayNextLetter();
-        }
-
-document.addEventListener('DOMContentLoaded', () => {
-    displayModernPhilosophicalQuote(); // 这个函数维持原样，用于展示哲理名言
-
-    const headerText = "筚路蓝缕，栉风沐雨";
-    const typingHeaderElement = document.getElementById('typing-header');
-    let currentIndex = 0;
-
-    function typeCharacter() {
-        if (currentIndex < headerText.length) {
-            typingHeaderElement.textContent += headerText.charAt(currentIndex);
-            currentIndex++;
-            setTimeout(typeCharacter, 100); // 调整此值以改变打字速度
-        }
-    }
-
-    typeCharacter(); // 开始打字效果
-});
-
-
+            typeCharacter(); // Initiate typing effect
+        });
     </script>
 
 </body>
