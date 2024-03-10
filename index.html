@@ -347,48 +347,53 @@
 // 通过DOM获取标题元素
 const typingHeaderElement = document.getElementById('typing-header');
 
-// 设置目标文本和初始化参数
-const targetText = '为了更伟大的利益';
-let phase = 'expanding'; // 控制阶段: 'expanding', 'shrinking'
-let indexOffset = 1; // 用于控制从中间开始打印的偏移量
-
 // 初始化光标闪烁效果
-let cursorVisible = false;
+let cursorVisible = true;
 setInterval(() => {
-    cursorVisible = !cursorVisible;
-    typingHeaderElement.textContent = displayText + (cursorVisible ? '|' : '');
+  cursorVisible = !cursorVisible;
+  typingHeaderElement.innerHTML = typingHeaderElement.textContent + (cursorVisible ? '|' : '');
 }, 500);
 
-// 设置当前显示文本
-let displayText = targetText.charAt(Math.floor(targetText.length / 2));
+const targetText = '为了更伟大的利益';
+let phase = 'typing';
+let textIndex = 0;
 
-// 主循环逻辑
-function cycleText() {
-    if (phase === 'expanding') {
-        // 从中间向两边扩展
-        if (indexOffset <= targetText.length / 2) {
-            displayText = targetText.substring(Math.floor(targetText.length / 2) - indexOffset, Math.ceil(targetText.length / 2) + indexOffset);
-            indexOffset++;
-        } else {
-            phase = 'shrinking';
-        }
-    } else if (phase === 'shrinking') {
-        // 从两边向中间收缩
-        if (indexOffset > 0) {
-            displayText = targetText.substring(Math.floor(targetText.length / 2) - indexOffset + 1, Math.ceil(targetText.length / 2) + indexOffset - 1);
-            indexOffset--;
-        } else {
-            phase = 'expanding';
-        }
-    }
-
-    typingHeaderElement.textContent = displayText + (cursorVisible ? '|' : '');
-
-    setTimeout(cycleText, 100); // 控制打印速度
+function resetForNextCycle() {
+  textIndex = 0;
+  phase = 'typing';
 }
 
-cycleText(); // 启动循环
+function updateTextForTyping() {
+  const middleIndex = Math.floor(targetText.length / 2);
+  const leftPart = targetText.slice(0, middleIndex + textIndex);
+  const rightPart = targetText.slice(targetText.length - textIndex);
+  typingHeaderElement.textContent = leftPart + rightPart;
+}
 
+function updateTextForDeleting() {
+  typingHeaderElement.textContent = typingHeaderElement.textContent.slice(0, -1);
+}
+
+function cycleText() {
+  if (phase === 'typing') {
+    if (textIndex <= Math.floor(targetText.length / 2)) {
+      updateTextForTyping();
+      textIndex++;
+    } else {
+      phase = 'deleting';
+    }
+  } else if (phase === 'deleting') {
+    if (typingHeaderElement.textContent.length > 0) {
+      updateTextForDeleting();
+    } else {
+      resetForNextCycle();
+    }
+  }
+
+  setTimeout(cycleText, 100);
+}
+
+cycleText();
 
     </script>
 
