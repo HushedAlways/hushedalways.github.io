@@ -203,6 +203,14 @@
     }
 }
 
+
+.modal { /* 样式内容 */ }
+.modal-content { /* 样式内容 */ }
+.close { /* 样式内容 */ }
+.progress { /* 样式内容 */ }
+.progress-bar { /* 样式内容 */ }
+</style>
+
     </style>
 </head>
 
@@ -220,6 +228,7 @@
             <li><a href="#contact">建立联系</a></li>
             <li><a href="#blog">再唱反调</a></li>
             <li><a href="#blog">鸣谢</a></li>
+            <li><a href="#acknowledgmentsModal" onclick="openModal('acknowledgmentsModal')">鸣谢</a></li>
         </ul>
     </nav>
 
@@ -300,6 +309,9 @@
     </main>
 
     <button class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+<div id="acknowledgmentsModal" class="modal" style="display:none;">
+    <!-- 模态内容 -->
+</div>
 
     <footer>
         <p>致敬每一位开发者，还有——你<br>版权所有 &copy; 2024 HushedAlways</p>
@@ -401,6 +413,13 @@ function startProcess() {
 }
 
 startProcess(); // 开始整个过程
+
+
+        <script>
+
+function openModal(modalId) { /* 函数体 */ }
+function closeModal(modalId) { /* 函数体 */ }
+</script>
 
     </script>
 
