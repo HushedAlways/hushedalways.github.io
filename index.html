@@ -192,7 +192,7 @@
             <h2>微光破晓工程组</h2>
             <p>没有人能够熄灭满天的星光，因此每一位开发者，都是我们要汇聚的星星之火！<br>今天，星星之火将汇聚成漫天的璀璨星河！</p>
             <a target="_blank"
-                href="https://qm.qq.com/cgi-bin/qm/qr?k=U3suwc2vJhTW1qOVUUqC331DFaFZHEeT&jump_from=webapi&authKey=fr9w8LfeEX8azyUoHM8H+gqoCPdJDsW91f7Fgb6AgmHkft3tyE2Cr24f2zgasZtB">
+                href="https://qm.qq.com/cgi-bin/qm/qr?k=U3suwc2vJhTW1qOVUUqC331DFaFZHEeT&jump_from=webapi&authKey=fr9w8LfeEX8azyUoHM8H+gqoCPdJDsW91f7Fgb6AgmHkft3tyE2Cr24f2zgasZtW">
                 <button>加入我们</button>
             </a>
         </section>
@@ -207,7 +207,7 @@
                     <p>如你所见，这个网站就是本人的第一个具有完全自主知识产权的代码编程的成品项目</p>
                 </div>
             </div>
-            <!-- 项目卡片 -->
+                        <!-- 项目卡片 -->
             <div class="card" onclick="openModal('modal1')">
                 <alt="竣工项目">
                 <div class="card-container">
@@ -224,6 +224,7 @@
                     <p>还在施工啦...</p>
                 </div>
             </div>
+            
         </section>
 
         <section id="contact" class="container">
@@ -314,46 +315,46 @@
 
         document.addEventListener('DOMContentLoaded', displayModernPhilosophicalQuote);
 
-        // 通过DOM获取标题元素
-        const typingHeaderElement = document.getElementById('typing-header');
+// 通过DOM获取标题元素
+const typingHeaderElement = document.getElementById('typing-header');
 
-        // 设置打字的速度
-        const typingSpeed = 100; // 每个字符的打字间隔时间（毫秒）
+// 设置打字的速度
+const typingSpeed = 100; // 每个字符的打字间隔时间（毫秒）
 
-        // 初始和最终文本
-        const initialText = '筚路蓝缕，栉风沐雨';
-        const finalText = '为了更伟大的利益';
+// 初始和最终文本
+const initialText = '筚路蓝缕，栉风沐雨';
+const finalText = '为了更伟大的利益';
 
-        function typeText(text, index, callback) {
-            if (index < text.length) {
-                typingHeaderElement.textContent += text.charAt(index);
-                setTimeout(() => typeText(text, index + 1, callback), typingSpeed);
-            } else if (callback) {
-                setTimeout(callback, 500); // 在进入下一步骤前稍作停顿
-            }
-        }
+function typeText(text, index, callback) {
+    if (index < text.length) {
+        typingHeaderElement.textContent += text.charAt(index);
+        setTimeout(() => typeText(text, index + 1, callback), typingSpeed);
+    } else if (callback) {
+        setTimeout(callback, 500); // 在进入下一步骤前稍作停顿
+    }
+}
 
-        function clearText(callback) {
-            if (typingHeaderElement.textContent.length > 0) {
-                typingHeaderElement.textContent = typingHeaderElement.textContent.substring(0, typingHeaderElement.textContent.length - 1);
-                setTimeout(() => clearText(callback), typingSpeed);
-            } else if (callback) {
-                callback();
-            }
-        }
+function clearText(callback) {
+    if (typingHeaderElement.textContent.length > 0) {
+        typingHeaderElement.textContent = typingHeaderElement.textContent.substring(0, typingHeaderElement.textContent.length - 1);
+        setTimeout(() => clearText(callback), typingSpeed);
+    } else if (callback) {
+        callback();
+    }
+}
 
-        function startProcess() {
-            typingHeaderElement.textContent = ''; // 清空文本以开始
-            typeText(initialText, 0, () => {
-                clearText(() => {
-                    typeText(finalText, 0, () => {
-                        clearText(startProcess); // 清除最终文本后重新开始
-                    });
-                });
+function startProcess() {
+    typingHeaderElement.textContent = ''; // 清空文本以开始
+    typeText(initialText, 0, () => {
+        clearText(() => {
+            typeText(finalText, 0, () => {
+                clearText(startProcess); // 清除最终文本后重新开始
             });
-        }
+        });
+    });
+}
 
-        startProcess(); // 开始整个过程
+startProcess(); // 开始整个过程
 
     </script>
 
