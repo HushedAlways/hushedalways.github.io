@@ -315,47 +315,45 @@
 
         document.addEventListener('DOMContentLoaded', displayModernPhilosophicalQuote);
 
-const typingHeaderElement = document.getElementById('typing-header');
-const typingSpeed = 100;
-const initialText = '为了你';
-const finalText = '更伟大的利益';
+        // Initialize variables
+        const typingHeaderElement = document.getElementById('typing-header');
+        const typingSpeed = 100; // Typing speed in milliseconds
 
-function typeText(text, index, callback) {
-    if (index < text.length) {
-        typingHeaderElement.textContent += text.charAt(index);
-        setTimeout(() => typeText(text, index + 1, callback), typingSpeed);
-    } else if (callback) {
-        setTimeout(callback, 3000); // Pause for 3 seconds before clearing
-    }
-}
+        // Function to display text word by word
+        function typeText(text, index, callback) {
+            if (index < text.length) {
+                typingHeaderElement.textContent += text.charAt(index);
+                setTimeout(() => typeText(text, index + 1, callback), typingSpeed);
+            } else if (callback) {
+                setTimeout(callback, 3000); // Pause for 3 seconds
+            }
+        }
 
-function clearText(text, index, callback) {
-    if (index >= 0) {
-        typingHeaderElement.textContent = text.substring(0, index);
-        setTimeout(() => clearText(text, index - 1, callback), typingSpeed);
-    } else if (callback) {
-        setTimeout(callback, 3000); // Pause for 3 seconds before starting the next word
-    }
-}
+        // Function to clear text
+        function clearText(callback) {
+            if (typingHeaderElement.textContent.length > 0) {
+                typingHeaderElement.textContent = typingHeaderElement.textContent.substring(0, typingHeaderElement.textContent.length - 1);
+                setTimeout(() => clearText(callback), typingSpeed);
+            } else if (callback) {
+                setTimeout(callback, 3000); // Pause for 3 seconds
+            }
+        }
 
-function animateText() {
-    typeText(initialText, 0, () => {
-        setTimeout(() => {
-            clearText(initialText, initialText.length - 1, () => {
-                setTimeout(() => {
-                    typeText(finalText, 0, () => {
-                        setTimeout(() => {
-                            clearText(finalText, finalText.length - 1, animateText); // Loop indefinitely
-                        }, 3000); // Pause for 3 seconds before clearing final text
-                    });
-                }, 3000); // Pause for 3 seconds before typing final text
+        // Start the process
+        function startProcess() {
+            typeText('更伟大的利益', 0, () => {
+                clearText(() => {
+                    startProcess();
+                });
             });
-        }, 3000); // Pause for 3 seconds before clearing initial text
-    });
-}
+        }
 
-animateText(); // Start the typing animation
-
+        // Start the process initially
+        if (document.readyState === "complete") {
+            startProcess();
+        } else {
+            document.addEventListener("DOMContentLoaded", startProcess);
+        }
 
     </script>
 
