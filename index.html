@@ -342,17 +342,20 @@ function animateText() {
     typeText(initialText, 0, () => {
         setTimeout(() => {
             clearText(initialText, initialText.length - 1, () => {
-                typeText(finalText, 0, () => {
-                    setTimeout(() => {
-                        clearText(finalText, finalText.length - 1, animateText); // Loop indefinitely
-                    }, 3000); // Pause for 3 seconds before clearing final text
-                });
+                setTimeout(() => {
+                    typeText(finalText, 0, () => {
+                        setTimeout(() => {
+                            clearText(finalText, finalText.length - 1, animateText); // Loop indefinitely
+                        }, 3000); // Pause for 3 seconds before clearing final text
+                    });
+                }, 3000); // Pause for 3 seconds before typing final text
             });
         }, 3000); // Pause for 3 seconds before clearing initial text
     });
 }
 
 animateText(); // Start the typing animation
+
 
     </script>
 
