@@ -259,46 +259,66 @@
         <p>致敬每一位开发者，还有——你<br>版权所有 &copy; 2024 HushedAlways</p>
     </footer>
 
-    <script>
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = "block";
-        }
+<script>
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+    }
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
-        }
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
 
-        const modernPhilosophicalQuotes = [
-            "于明镜前审视自我，于幻象中寻觅真相。",
-            "我们实现明天的唯一限制，就是我们今天的怀疑。",
-            "挽狂澜于既倒，扶大厦之将倾",
-            "将只手，补天裂",
-            "成功不是终点，失败也不是终结：唯有勇气才是永恒。",
-            "我们唯一需要害怕的，是恐惧本身。这很有智慧。",
-            "当你忙着制定其他计划时，生活就在进行。",
-            "如果相信你能做到，那么你就已经成功了一半。",
-            "不要等到铁热了才打，而是要通过敲打使它变热。",
-            "生命中最大的荣耀不在于从未跌倒，而在于每次跌倒后都能重新站起来。",
-            "唯一不可能的旅程，就是你从未涉足的道路。",
-            "成功就是从失败到失败，但热情不减。",
-        ];
+    const modernPhilosophicalQuotes = [
+        "于明镜前审视自我，于幻象中寻觅真相。",
+        "我们实现明天的唯一限制，就是我们今天的怀疑。",
+        "挽狂澜于既倒，扶大厦之将倾",
+        "将只手，补天裂",
+        "成功不是终点，失败也不是终结：唯有勇气才是永恒。",
+        "我们唯一需要害怕的，是恐惧本身。这很有智慧。",
+        "当你忙着制定其他计划时，生活就在进行。",
+        "如果相信你能做到，那么你就已经成功了一半。",
+        "不要等到铁热了才打，而是要通过敲打使它变热。",
+        "生命中最大的荣耀不在于从未跌倒，而在于每次跌倒后都能重新站起来。",
+        "唯一不可能的旅程，就是你从未涉足的道路。",
+        "成功就是从失败到失败，但热情不减。",
+    ];
 
-function startProcess() {
-    typingHeaderElement.textContent = ''; // Start with an empty text
-    const firstText = '为了你';
-    const finalText = '为了更伟大的利益';
+    function displayModernPhilosophicalQuote() {
+        const quoteContainer = document.getElementById('modern-philosophical-quote');
+        const randomIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
+        const quote = modernPhilosophicalQuotes[randomIndex];
+        let index = 0;
 
-    // Function to type out a given text one character at a time
+        const displayNextLetter = () => {
+            if (index < quote.length) {
+                quoteContainer.textContent += quote.charAt(index);
+                index++;
+                setTimeout(displayNextLetter, 100);
+            } else {
+                setTimeout(() => {
+                    clearText(quote.length, displayModernPhilosophicalQuote); // Clear the quote before displaying the next
+                }, 3000); // Display for 3 seconds before clearing
+            }
+        };
+
+        displayNextLetter();
+    }
+
+    // 通过DOM获取标题元素
+    const typingHeaderElement = document.getElementById('typing-header');
+
+    // 设置打字的速度
+    const typingSpeed = 100; // 每个字符的打字间隔时间（毫秒）
+
     function typeText(text, index, callback) {
         if (index < text.length) {
             typingHeaderElement.textContent += text.charAt(index);
             setTimeout(() => typeText(text, index + 1, callback), typingSpeed);
         } else if (callback) {
-            setTimeout(callback, 500); // Wait a bit before moving to the next step
+            setTimeout(callback, 500); // 在进入下一步骤前稍作停顿
         }
     }
 
-    // Function to clear the last character(s) of the current text
     function clearText(numberOfChars, callback) {
         if (numberOfChars > 0) {
             typingHeaderElement.textContent = typingHeaderElement.textContent.substring(0, typingHeaderElement.textContent.length - 1);
@@ -308,23 +328,22 @@ function startProcess() {
         }
     }
 
-    // Start by typing "为了你"
-    typeText(firstText, 0, () => {
-        // After "为了你" is typed out, clear "你"
-        clearText("你".length, () => {
-            // Once "你" is cleared, type out the rest to complete "为了更伟大的利益"
-            const remainderText = finalText.substring(firstText.length - 1); // Get the remaining part to type
-            typeText(remainderText, 0, () => {
-                // After the final text is displayed, you can either stop or repeat the process
-                // setTimeout(startProcess, 2000); // For continuous loop, uncomment this line
+    function startProcess() {
+        typingHeaderElement.textContent = ''; // 清空文本以开始
+        typeText('为了你', 0, () => {
+            clearText(1, () => { // 清除“你”
+                typeText('为了更伟大的利益', 2, () => { // 从“为了”之后继续
+                    setTimeout(startProcess, 2000); // 清除最终文本后重新开始，如需无限循环则取消此行注释
+                });
             });
         });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        displayModernPhilosophicalQuote();
+        startProcess();
     });
-}
-
-startProcess(); // Initialize the typing effect process
-
-    </script>
+</script>
 
 </body>
 
