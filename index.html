@@ -283,78 +283,47 @@
             "成功就是从失败到失败，但热情不减。",
         ];
 
-        function displayModernPhilosophicalQuote() {
-            const quoteContainer = document.getElementById('modern-philosophical-quote');
-            const randomIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
-            const quote = modernPhilosophicalQuotes[randomIndex];
-            let index = 0;
+function startProcess() {
+    typingHeaderElement.textContent = ''; // Start with an empty text
+    const firstText = '为了你';
+    const finalText = '为了更伟大的利益';
 
-            const displayNextLetter = () => {
-                if (index < quote.length) {
-                    quoteContainer.textContent += quote.charAt(index);
-                    index++;
-                    setTimeout(displayNextLetter, 100);
-                } else {
-                    setTimeout(() => {
-                        clearText();
-                    }, 3000); // Display for 3 seconds before clearing
-                }
-            };
-
-            const clearText = () => {
-                if (quoteContainer.textContent.length > 0) {
-                    quoteContainer.textContent = quoteContainer.textContent.slice(0, -1);
-                    setTimeout(clearText, 50);
-                } else {
-                    displayModernPhilosophicalQuote();
-                }
-            };
-
-            displayNextLetter();
+    // Function to type out a given text one character at a time
+    function typeText(text, index, callback) {
+        if (index < text.length) {
+            typingHeaderElement.textContent += text.charAt(index);
+            setTimeout(() => typeText(text, index + 1, callback), typingSpeed);
+        } else if (callback) {
+            setTimeout(callback, 500); // Wait a bit before moving to the next step
         }
+    }
 
-        document.addEventListener('DOMContentLoaded', displayModernPhilosophicalQuote);
-
-        // 通过DOM获取标题元素
-        const typingHeaderElement = document.getElementById('typing-header');
-
-        // 设置打字的速度
-        const typingSpeed = 100; // 每个字符的打字间隔时间（毫秒）
-
-        // 初始和最终文本
-        const initialText = '筚路蓝缕，栉风沐雨';
-        const finalText = '为了更伟大的利益';
-
-        function typeText(text, index, callback) {
-            if (index < text.length) {
-                typingHeaderElement.textContent += text.charAt(index);
-                setTimeout(() => typeText(text, index + 1, callback), typingSpeed);
-            } else if (callback) {
-                setTimeout(callback, 500); // 在进入下一步骤前稍作停顿
-            }
+    // Function to clear the last character(s) of the current text
+    function clearText(numberOfChars, callback) {
+        if (numberOfChars > 0) {
+            typingHeaderElement.textContent = typingHeaderElement.textContent.substring(0, typingHeaderElement.textContent.length - 1);
+            setTimeout(() => clearText(numberOfChars - 1, callback), typingSpeed);
+        } else if (callback) {
+            callback();
         }
+    }
 
-        function clearText(callback) {
-            if (typingHeaderElement.textContent.length > 0) {
-                typingHeaderElement.textContent = typingHeaderElement.textContent.substring(0, typingHeaderElement.textContent.length - 1);
-                setTimeout(() => clearText(callback), typingSpeed);
-            } else if (callback) {
-                callback();
-            }
-        }
-
-        function startProcess() {
-            typingHeaderElement.textContent = ''; // 清空文本以开始
-            typeText(initialText, 0, () => {
-                clearText(() => {
-                    typeText(finalText, 0, () => {
-                        clearText(startProcess); // 清除最终文本后重新开始
-                    });
-                });
+    // Start by typing "为了你"
+    typeText(firstText, 0, () => {
+        // After "为了你" is typed out, clear "你"
+        clearText("你".length, () => {
+            // Once "你" is cleared, type out the rest to complete "为了更伟大的利益"
+            const remainderText = finalText.substring(firstText.length - 1); // Get the remaining part to type
+            typeText(remainderText, 0, () => {
+                // After the final text is displayed, you can either stop or repeat the process
+                // setTimeout(startProcess, 2000); // For continuous loop, uncomment this line
             });
-        }
+        });
+    });
+}
 
-        startProcess(); // 开始整个过程
+startProcess(); // Initialize the typing effect process
+
     </script>
 
 </body>
