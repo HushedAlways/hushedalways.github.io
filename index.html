@@ -346,62 +346,78 @@
             document.getElementById(modalId).style.display = "none";
         }
 
-        document.addEventListener('DOMContentLoaded', displayModernPhilosophicalQuote);
+document.addEventListener('DOMContentLoaded', () => {
+    const typingHeaderElement = document.getElementById('typing-header');
+    const quoteContainer = document.getElementById('modern-philosophical-quote');
+    const initialText = '为了';
+    const texts = ['你，筚路蓝缕，栉风沐雨', '更伟大的利益'];
+    let currentTextIndex = 0;
+    const typingSpeed = 100;
 
-        function displayModernPhilosophicalQuote() {
-            const modernPhilosophicalQuotes = [
-                "于明镜前审视自我，于幻象中寻觅真相。",
-                "我们实现明天的唯一限制，就是我们今天的怀疑。",
-                "挽狂澜于既倒，扶大厦之将倾",
-                "将只手，补天裂",
-                "成功不是终点，失败也不是终结：唯有勇气才是永恒。",
-                "我们唯一需要害怕的，是恐惧本身。这很有智慧。",
-                "当你忙着制定其他计划时，生活就在进行。",
-                "如果相信你能做到，那么你就已经成功了一半。",
-                "不要等到铁热了才打，而是要通过敲打使它变热。",
-                "生命中最大的荣耀不在于从未跌倒，而在于每次跌倒后都能重新站起来。",
-                "唯一不可能的旅程，就是你从未涉足的道路。",
-                "成功就是从失败到失败，但热情不减。",
-            ];
-            const quoteContainer = document.getElementById('modern-philosophical-quote');
-            const randomIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
-            quoteContainer.textContent = modernPhilosophicalQuotes[randomIndex];
+    const modernPhilosophicalQuotes = [
+        "于明镜前审视自我，于幻象中寻觅真相。",
+        "我们实现明天的唯一限制，就是我们今天的怀疑。",
+        "挽狂澜于既倒，扶大厦之将倾",
+        "将只手，补天裂",
+        "成功不是终点，失败也不是终结：唯有勇气才是永恒。",
+        "我们唯一需要害怕的，是恐惧本身。这很有智慧。",
+        "当你忙着制定其他计划时，生活就在进行。",
+        "如果相信你能做到，那么你就已经成功了一半。",
+        "不要等到铁热了才打，而是要通过敲打使它变热。",
+        "生命中最大的荣耀不在于从未跌倒，而在于每次跌倒后都能重新站起来。",
+        "唯一不可能的旅程，就是你从未涉足的道路。",
+        "成功就是从失败到失败，但热情不减。",
+    ];
+    let quoteIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
+
+    // 设置固定的头部文本
+    typingHeaderElement.textContent = initialText;
+
+    // 动态文本打印函数
+    function typeText(element, text, index, callback) {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            setTimeout(() => typeText(element, text, index + 1, callback), typingSpeed);
+        } else if (callback) {
+            setTimeout(callback, 2000); // 延时后执行回调
         }
+    }
 
-        // Typing and clearing text for the header
-        const typingHeaderElement = document.getElementById('typing-header');
-        const typingSpeed = 100;
-        const initialText = '筚路蓝缕，栉风沐雨';
-        const finalText = '为了更伟大的利益';
-
-        function typeText(text, index, callback) {
-            if (index < text.length) {
-                typingHeaderElement.textContent += text.charAt(index);
-                setTimeout(() => typeText(text, index + 1, callback), typingSpeed);
-            } else if (callback) {
-                setTimeout(callback, 500);
-            }
+    // 清除文本函数，保留前缀
+    function clearText(element, prefix, callback) {
+        if (element.textContent.length > prefix.length) {
+            element.textContent = element.textContent.substring(0, element.textContent.length - 1);
+            setTimeout(() => clearText(element, prefix, callback), typingSpeed);
+        } else if (callback) {
+            callback();
         }
+    }
 
-        function clearText(callback) {
-            if (typingHeaderElement.textContent.length > 0) {
-                typingHeaderElement.textContent = typingHeaderElement.textContent.substring(0, typingHeaderElement.textContent.length - 1);
-                setTimeout(() => clearText(callback), typingSpeed);
-            } else if (callback) {
-                callback();
-            }
-        }
-
-        function startProcess() {
-            typingHeaderElement.textContent = '';
-            typeText(initialText, 0, () => {
-                clearText(() => {
-                    typeText(finalText, 0, () => {
-                        clearText(startProcess);
-                    });
-                });
+    // 启动标题文本动态效果
+    function startHeaderTextProcess() {
+        const textToAdd = texts[currentTextIndex];
+        typeText(typingHeaderElement, textToAdd, 0, () => {
+            clearText(typingHeaderElement, initialText, () => {
+                currentTextIndex = (currentTextIndex + 1) % texts.length; // 循环文本数组
+                startHeaderTextProcess();
             });
-        }
+        });
+    }
+
+    // 启动哲理名言动态打印效果
+    function startPhilosophicalQuoteProcess() {
+        const quote = modernPhilosophicalQuotes[quoteIndex];
+        typeText(quoteContainer, quote, 0, () => {
+            clearText(quoteContainer, '', () => {
+                quoteIndex = (quoteIndex + 1) % modernPhilosophicalQuotes.length;
+                startPhilosophicalQuoteProcess();
+            });
+        });
+    }
+
+    startHeaderTextProcess();
+    startPhilosophicalQuoteProcess();
+});
 
         startProcess();
 
