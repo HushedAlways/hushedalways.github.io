@@ -221,6 +221,30 @@
     cursor: pointer;
 }
 
+/* 回到顶部按钮样式 */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    /* 其他样式 */
+}
+
+/* 切换主题按钮样式 */
+.toggle-theme {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    /* 其他样式 */
+}
+
+/* 深浅主题样式 */
+.light-theme {
+    background: #f0f0f0;
+    color: #333;
+    /* 根据需要定义更多样式 */
+}
+
+        
     </style>
 </head>
 
@@ -404,6 +428,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    document.addEventListener('DOMContentLoaded', () => {
+    // 回到顶部按钮逻辑
+    const backToTopBtn = document.getElementById('back-to-top-btn');
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+
+    // 切换主题按钮逻辑
+    const toggleThemeBtn = document.getElementById('toggle-theme-btn');
+    toggleThemeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+    });
+
+    // 现代哲理前缀保持逻辑
+    // 以及导航链接平滑滚动逻辑（如果有导航链接的话）
+});
+
     // 启动哲理名言动态打印效果
     function startPhilosophicalQuoteProcess() {
         const quote = modernPhilosophicalQuotes[quoteIndex];
@@ -420,7 +461,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
         startProcess();
-
+        
     </script>
 
+<!-- 回到顶部按钮 -->
+<button id="back-to-top-btn" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- 切换主题按钮 -->
+<button id="toggle-theme-btn" class="toggle-theme">切换主题</button>
+
+                
 </body>
