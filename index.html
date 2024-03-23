@@ -221,22 +221,6 @@
     cursor: pointer;
 }
 
-/* 回到顶部按钮样式 */
-.back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    /* 其他样式 */
-}
-
-/* 切换主题按钮样式 */
-.toggle-theme {
-    position: fixed;
-    bottom: 70px;
-    right: 20px;
-    /* 其他样式 */
-}
-        
     </style>
 </head>
 
@@ -384,7 +368,6 @@ document.addEventListener('DOMContentLoaded', () => {
         "唯一不可能的旅程，就是你从未涉足的道路。",
         "成功就是从失败到失败，但热情不减。",
     ];
-    <p id="modern-philosophical-quote">唠叨汤剂：</p>
     let quoteIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
 
     // 设置固定的头部文本
@@ -421,10 +404,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-
-});
-
     // 启动哲理名言动态打印效果
     function startPhilosophicalQuoteProcess() {
         const quote = modernPhilosophicalQuotes[quoteIndex];
@@ -441,8 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
         startProcess();
-        
+
     </script>
 
-                
 </body>
