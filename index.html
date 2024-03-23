@@ -236,14 +236,6 @@
     right: 20px;
     /* 其他样式 */
 }
-
-/* 深浅主题样式 */
-.light-theme {
-    background: #f0f0f0;
-    color: #333;
-    /* 根据需要定义更多样式 */
-}
-
         
     </style>
 </head>
@@ -361,8 +353,6 @@
         <p>致敬每一位开发者，还有——你<br>版权所有 &copy; 2024 HushedAlways</p>
     </footer>
 
-<div id="particles-container" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;"></div>
-                
     <script>
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "block";
@@ -394,8 +384,9 @@ document.addEventListener('DOMContentLoaded', () => {
         "唯一不可能的旅程，就是你从未涉足的道路。",
         "成功就是从失败到失败，但热情不减。",
     ];
-    let quoteIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
     <p id="modern-philosophical-quote">唠叨汤剂：</p>
+    let quoteIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
+
     // 设置固定的头部文本
     typingHeaderElement.textContent = initialText;
 
@@ -431,28 +422,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-    // 回到顶部按钮逻辑
-    const backToTopBtn = document.getElementById('back-to-top-btn');
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    });
-
-let isParticlesVisible = false;
-
-document.getElementById('toggle-theme-btn').addEventListener('click', function() {
-    const particlesContainer = document.getElementById('particles-container');
-    if (isParticlesVisible) {
-        // 隐藏粒子特效
-        particlesContainer.style.display = 'none';
-        isParticlesVisible = false;
-    } else {
-        // 显示粒子特效
-        particlesContainer.style.display = 'block';
-        isParticlesVisible = true;
-        // 可以在这里初始化粒子特效库，如果使用了如particles.js等库
-    }
-});
-
 
 });
 
@@ -474,12 +443,6 @@ document.getElementById('toggle-theme-btn').addEventListener('click', function()
         startProcess();
         
     </script>
-
-<!-- 回到顶部按钮 -->
-<button id="back-to-top-btn" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
-
-<!-- 切换主题按钮 -->
-<button id="toggle-theme-btn" class="toggle-theme">切换主题</button>
 
                 
 </body>
