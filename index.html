@@ -247,9 +247,9 @@
         <span class="close" onclick="closeModal('thanksModal')">&times;</span>
         <h2>鸣谢</h2>
         <ul class="acknowledgments-list">
-            <li>ZspecialnY（ZXy） - 感谢你为我的开发提供的动力。</li>
-            <li>微光破晓工程组技术部 - 感谢你们的团队协作和创新精神。</li>
-            <li>GitHub - 为我们提供了开发和托管项目的平台。</li>
+            <li>ZspecialnY（ZXy） - 热爱永不退去，友谊永不落幕</li>
+            <li>DAWNLIGHTTEAM - 没有人能够熄灭满天的星光，因此每一位开发者都是我们要汇聚的星星之火！<br>今天，星星之火将汇聚成璀璨的星河！</li>
+            <li>GitHub - 提供了开发和托管项目的平台。</li>
         </ul>
     </div>
 </div>
@@ -267,11 +267,11 @@
         </section>
 
         <section id="light-project" class="container">
-            <h2>微光破晓工程组</h2>
-            <p><h2>没有人能够熄灭满天的星光，因此每一位开发者，都是我们要汇聚的星星之火！<h2><br><h1>今天，星星之火将汇聚成漫天的璀璨星河！</h1></p>
+            <h2>DAWNLIGHT TEAM</h2>
+            <p><h2>没有人能够熄灭满天的星光，因此每一位开发者，都是我们要汇聚的星星之火！<br>今天，星星之火将汇聚成漫天的璀璨星河！</p>
             <a target="_blank"
                 href="https://qm.qq.com/cgi-bin/qm/qr?k=U3suwc2vJhTW1qOVUUqC331DFaFZHEeT&jump_from=webapi&authKey=fr9w8LfeEX8azyUoHM8H+gqoCPdJDsW91f7Fgb6AgmHkft3tyE2Cr24f2zgasZtV">
-                <button>加入我们</button>
+                <button>汇聚进入璀璨的星河</button>
             </a>
         </section>
 
@@ -293,13 +293,20 @@
                     <p>一些对往事的回顾，对尘封往事的回顾...<br>敬献给 “ZspecialnY”</p>
                 </div>
             </div>
-            <h2>吃灰中的项目</h2>
+                        <div class="card" onclick="openModal('modal1')">
+                <img src="" alt="竣工项目">
+                <div class="card-container">
+                    <h4><b>工程组静态网站竣工</b></h4>
+                    <p>https://dawnlightteam.github.io/</p>
+                </div>
+            </div>
+            <h2>施工中的项目</h2>
             <!-- 项目卡片 -->
             <div class="card" onclick="openModal('modal1')">
                 <img src="" alt="施工项目">
                 <div class="card-container">
-                    <h4><b>工程组静态网站组建</b></h4>
-                    <p>还在施工啦...</p>
+                    <h4><b>建立记忆尘封网站</b></h4>
+                    <p>即将开工</p>
                 </div>
             </div>
             
@@ -320,13 +327,13 @@
             <h2>再唱反调</h2>
             <div class="blog-post">
                 <h3>我的公开联系方式</h3>
-                <p class="date">2024年3月10日</p>
-                <p>QQ：3531831289，E-mail：kirin_initi@outlook.com...</p>
+                <p class="date">2024年3月31日</p>
+                <p>QQ：3531831289，E-mail：hushedalways@qq.com<br>注明：本人学业繁忙，处理消息将会有一定的响应时间。</p>
             </div>
             <div class="blog-post">
-                <h3>What am I doing?</h3>
+                <h3>看看这条咸鱼在做什么</h3>
                 <p class="date">2024年全年维护中</p>
-                <p>时刻忠于党、忠于祖国、忠于人民，为加入中国共产主义青年团而不懈努力。正在学习Python、Kali Linux...</p>
+                <p>时刻忠于党、忠于祖国、忠于人民，还有————你。<br>正在学习Python、HTML等编程语言。</p>
             </div>
         </section>
     </main>
@@ -334,7 +341,7 @@
     <button class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
     <footer>
-        <p>致敬每一位开发者，还有——你<br>版权所有 &copy; 2024 HushedAlways</p>
+        <p>没有寂寞与生俱来，没有孤独心甘情愿<br>版权所有 &copy; 2024 HushedAlways</p>
     </footer>
 
     <script>
@@ -361,12 +368,13 @@ document.addEventListener('DOMContentLoaded', () => {
         "将只手，补天裂",
         "成功不是终点，失败也不是终结：唯有勇气才是永恒。",
         "我们唯一需要害怕的，是恐惧本身。这很有智慧。",
-        "当你忙着制定其他计划时，生活就在进行。",
-        "如果相信你能做到，那么你就已经成功了一半。",
+        "当忙着制定其他计划时，生活就在进行。",
+        "如果相信能做到，那么就已经成功了一半。",
         "不要等到铁热了才打，而是要通过敲打使它变热。",
         "生命中最大的荣耀不在于从未跌倒，而在于每次跌倒后都能重新站起来。",
-        "唯一不可能的旅程，就是你从未涉足的道路。",
+        "唯一不可能的旅程，就是从未涉足的道路。",
         "成功就是从失败到失败，但热情不减。",
+        "没有寂寞与生俱来，没有孤独心甘情愿。",
     ];
     let quoteIndex = Math.floor(Math.random() * modernPhilosophicalQuotes.length);
 
