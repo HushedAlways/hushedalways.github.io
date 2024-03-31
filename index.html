@@ -418,14 +418,16 @@ document.addEventListener('DOMContentLoaded', () => {
 // 启动哲理名言动态打印效果
 function startPhilosophicalQuoteProcess() {
     const quote = modernPhilosophicalQuotes[quoteIndex];
-    // 在打印哲理名言之前先打印固定文本“唠叨汤剂”
-    typeText(quoteContainer, "唠叨汤剂 - " + quote, 0, () => {
+    // 在打印哲理名言之前添加固定文本“唠叨汤剂”
+    quoteContainer.textContent = "唠叨汤剂 - " + quote;
+    typeText(quoteContainer, quote, 0, () => {
         clearText(quoteContainer, '', () => {
             quoteIndex = (quoteIndex + 1) % modernPhilosophicalQuotes.length;
             startPhilosophicalQuoteProcess();
         });
     });
 }
+
 
         typeText(quoteContainer, quote, 0, () => {
             clearText(quoteContainer, '', () => {
